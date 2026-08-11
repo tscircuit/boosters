@@ -7,6 +7,7 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 | Board | Description |
 |---|---|
 | [BOOSTXL-EDUMKII educational BoosterPack](./boostxl-edumkii/) | Display, environmental and motion sensors, joystick, buttons, audio, RGB LED, buzzer, servo, and LaunchPad XL headers |
+| [BOOST-DRV8848 dual brushed motor BoosterPack](./boost-drv8848/) | DRV8848 dual H-bridge motor stage, adjustable current regulation, parallel mode, external motor power, and LaunchPad headers |
 
 Each BoosterPack lives in its own top-level directory with its circuit entrypoint, imported parts, mechanical model definitions/assets, and board-specific documentation. Shared deployment and TypeScript configuration remain at the repository root.
 
@@ -20,4 +21,4 @@ bun run typecheck
 bun run build
 ```
 
-The root build currently targets `boostxl-edumkii/index.circuit.tsx`. Additional BoosterPack directories can be added without mixing their circuit assets.
+The root build validates and routes both BoosterPack entrypoints. To work on one board interactively, run `bun run dev:boostxl-edumkii` or `bun run dev:boost-drv8848`.

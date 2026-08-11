@@ -21,7 +21,9 @@
   },
   "include": [
     "boostxl-edumkii/**/*.ts",
-    "boostxl-edumkii/**/*.tsx"
+    "boostxl-edumkii/**/*.tsx",
+    "boost-drv8848/**/*.ts",
+    "boost-drv8848/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
