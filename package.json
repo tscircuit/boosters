@@ -1,0 +1,29 @@
+{
+  "name": "@tsci/imrishabh18.ti-boosters",
+  "version": "0.1.0",
+  "description": "A multi-board collection of TI LaunchPad BoosterPack designs built with tscircuit",
+  "main": "dist/index.js",
+  "keywords": [
+    "tscircuit",
+    "ti",
+    "launchpad",
+    "boosterpack",
+    "pcb"
+  ],
+  "scripts": {
+    "dev": "tsci dev boostxl-edumkii/index.circuit.tsx",
+    "build": "tsci build boostxl-edumkii/index.circuit.tsx --disable-parts-engine --svgs --autorouter-timeout 300s",
+    "build:ci": "tsci build --ci --concurrency 4",
+    "snapshot": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
+    "snapshot:update": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
+    "start": "tsci dev boostxl-edumkii/index.circuit.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "tscircuit": "^0.0.2248",
+    "typescript": "^5.0.0"
+  },
+  "author": "imrishabh18",
+  "license": "MIT"
+}

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.tscircuit/
+.npmrc
+*.diff.png
+*.received.svg
