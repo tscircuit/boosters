@@ -11,17 +11,17 @@
     "pcb"
   ],
   "scripts": {
-    "dev": "tsci dev boostxl-edumkii/index.circuit.tsx",
-    "build": "tsci build boostxl-edumkii/index.circuit.tsx --disable-parts-engine --svgs --autorouter-timeout 300s",
+    "dev": "tsci dev",
+    "build": "tsci build --ci --concurrency 4",
     "build:ci": "tsci build --ci --concurrency 4",
     "snapshot": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
     "snapshot:update": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
-    "start": "tsci dev boostxl-edumkii/index.circuit.tsx",
+    "start": "tsci dev",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
-    "tscircuit": "^0.0.2248",
+    "tscircuit": "^0.0.2292",
     "typescript": "^5.0.0"
   },
   "author": "tscircuit",
