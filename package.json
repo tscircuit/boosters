@@ -1,5 +1,5 @@
 {
-  "name": "@tsci/imrishabh18.ti-boosters",
+  "name": "@tsci/tscircuit.boosters",
   "version": "0.1.0",
   "description": "A multi-board collection of TI LaunchPad BoosterPack designs built with tscircuit",
   "main": "dist/index.js",
@@ -24,6 +24,6 @@
     "tscircuit": "^0.0.2248",
     "typescript": "^5.0.0"
   },
-  "author": "imrishabh18",
+  "author": "tscircuit",
   "license": "MIT"
 }
