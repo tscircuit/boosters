@@ -49,16 +49,16 @@ Run these commands from the repository root:
 ```sh
 bun install
 bun run typecheck
-bun run build:boost-drv8848
+bun run build
 ```
 
 For an interactive editor session:
 
 ```sh
-bun run dev:boost-drv8848
+bun run dev
 ```
 
-The build writes the routed Circuit JSON, PCB SVG, and schematic SVG under `dist/boost-drv8848/index/`.
+Select `boost-drv8848/index.circuit.tsx` in the development UI. The build writes the routed Circuit JSON and preview assets under `dist/boost-drv8848/index/`.
 
 ## Operating notes
 

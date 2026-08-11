@@ -11,20 +11,12 @@
     "pcb"
   ],
   "scripts": {
-    "dev": "bun run dev:boostxl-edumkii",
-    "dev:boostxl-edumkii": "tsci dev boostxl-edumkii/index.circuit.tsx",
-    "dev:boost-drv8848": "tsci dev boost-drv8848/index.circuit.tsx",
-    "build": "bun run build:boostxl-edumkii && bun run build:boost-drv8848",
-    "build:boostxl-edumkii": "tsci build boostxl-edumkii/index.circuit.tsx --disable-parts-engine --svgs --autorouter-timeout 300s",
-    "build:boost-drv8848": "tsci build boost-drv8848/index.circuit.tsx --svgs --autorouter-timeout 300s",
+    "dev": "tsci dev",
+    "build": "tsci build --ci --concurrency 4",
     "build:ci": "tsci build --ci --concurrency 4",
-    "snapshot": "bun run snapshot:boostxl-edumkii && bun run snapshot:boost-drv8848",
-    "snapshot:boostxl-edumkii": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
-    "snapshot:boost-drv8848": "tsci snapshot boost-drv8848/index.circuit.tsx",
-    "snapshot:update": "bun run snapshot:update:boostxl-edumkii && bun run snapshot:update:boost-drv8848",
-    "snapshot:update:boostxl-edumkii": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
-    "snapshot:update:boost-drv8848": "tsci snapshot boost-drv8848/index.circuit.tsx --update",
-    "start": "bun run dev",
+    "snapshot": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
+    "snapshot:update": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
+    "start": "tsci dev",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

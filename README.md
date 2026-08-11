@@ -21,4 +21,4 @@ bun run typecheck
 bun run build
 ```
 
-The root build validates and routes both BoosterPack entrypoints. To work on one board interactively, run `bun run dev:boostxl-edumkii` or `bun run dev:boost-drv8848`.
+The root build validates and routes both BoosterPack entrypoints. Run `bun run dev` to open the tscircuit development UI, then select the board you want to view or edit.
