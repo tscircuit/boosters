@@ -99,7 +99,7 @@ export default function Circuit() {
         schY={0}
         pcbX={0}
         pcbY={0}
-        schMaxTraceDistance="2mm"
+        schMaxTraceDistance="1.2mm"
         schTraceAutoLabelEnabled
       >
         <schematicsection
@@ -165,20 +165,7 @@ export default function Circuit() {
         <SN74LVC1G07DBVR
           name="U1"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
-          schX={-11.5}
-          schY={-3}
-          schWidth="2.8mm"
-          schHeight="2.4mm"
-          schPinStyle={{
-            pin1: { marginTop: "0.15mm", marginBottom: "0.15mm" },
-            pin2: { marginTop: "0.15mm", marginBottom: "0.15mm" },
-          }}
-          schPinArrangement={{
-            leftSide: [1, 2],
-            rightSide: [4],
-            topSide: [5],
-            bottomSide: [3],
-          }}
+          noSchematicRepresentation
           pcbX={-11.7}
           pcbY={1.4}
           noConnect={["NC"]}
@@ -187,6 +174,24 @@ export default function Circuit() {
             GND: N.GND,
             Y: N.TX_OD,
             VCC: N.V33,
+          }}
+        />
+        {/* Keep TI's exact JLCPCB buffer package on the PCB, but project it as
+            the native powered-triangle symbol used by the reference sheet. */}
+        <schematicsymbol
+          name="U1_BUFFER"
+          displayName="U1"
+          chipRef=".U1"
+          symbolName="opamp_with_power"
+          schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
+          schX={-11.5}
+          schY={-3}
+          connections={{
+            inp1: ".U1 > .A",
+            inp2: ".U1 > .NC",
+            out: ".U1 > .Y",
+            "V+": ".U1 > .VCC",
+            "V-": ".U1 > .GND",
           }}
         />
         <capacitor
@@ -256,8 +261,8 @@ export default function Circuit() {
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
           schX={-0.5}
           schY={-3}
-          schWidth="2.8mm"
-          schHeight="2.1mm"
+          schWidth="2.5mm"
+          schHeight="2.9mm"
           schPinStyle={TMP107_SCH_PIN_STYLE}
           schPinArrangement={{
             leftSide: [1, 3, 7],
@@ -295,9 +300,9 @@ export default function Circuit() {
           name="U3"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
           schX={5}
-          schY={-3}
-          schWidth="2.8mm"
-          schHeight="2.1mm"
+          schY={-2.8}
+          schWidth="2.5mm"
+          schHeight="2.9mm"
           schPinStyle={TMP107_SCH_PIN_STYLE}
           schPinArrangement={{
             leftSide: [1, 3, 7],
@@ -320,7 +325,7 @@ export default function Circuit() {
           name="C3"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
           schX={5}
-          schY={-0.7}
+          schY={0}
           schRotation="0deg"
           manufacturerPartNumber="GRM188R71E104KA01D"
           supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -334,10 +339,10 @@ export default function Circuit() {
         <TMP107BIDR
           name="U4"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
-          schX={10.6}
-          schY={-3}
-          schWidth="2.8mm"
-          schHeight="2.1mm"
+          schX={10.5}
+          schY={-2.8}
+          schWidth="2.5mm"
+          schHeight="2.9mm"
           schPinStyle={TMP107_SCH_PIN_STYLE}
           schPinArrangement={{
             leftSide: [1, 3, 7],
@@ -359,8 +364,8 @@ export default function Circuit() {
         <capacitor
           name="C4"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
-          schX={10.6}
-          schY={-0.7}
+          schX={10.5}
+          schY={0}
           schRotation="270deg"
           manufacturerPartNumber="GRM188R71E104KA01D"
           supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -372,32 +377,32 @@ export default function Circuit() {
           connections={{ pin1: N.V33, pin2: N.GND }}
         />
         <schematicrect
-          schX={5.3}
-          schY={-2.1}
-          width="5.2mm"
-          height="4.6mm"
+          schX={5}
+          schY={-2.2}
+          width="4.4mm"
+          height="7.2mm"
           strokeWidth="0.03mm"
           color="#555555"
         />
         <schematictext
           text="layout 3 pin coupon board as breakaway"
-          schX={5.3}
-          schY={0}
+          schX={5}
+          schY={1.05}
           fontSize={0.14}
           anchor="center"
         />
         <schematicrect
-          schX={10.9}
-          schY={-2.1}
-          width="5.2mm"
-          height="4.6mm"
+          schX={10.5}
+          schY={-2.2}
+          width="4.4mm"
+          height="7.2mm"
           strokeWidth="0.03mm"
           color="#555555"
         />
         <schematictext
           text="layout 3 pin coupon board as breakaway"
-          schX={10.9}
-          schY={0}
+          schX={10.5}
+          schY={1.05}
           fontSize={0.14}
           anchor="center"
         />
