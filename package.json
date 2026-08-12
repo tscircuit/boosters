@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "dev": "tsci dev",
-    "build": "tsci build --ci --concurrency 4",
-    "build:ci": "tsci build --ci --concurrency 4",
+    "build": "tsci build --ci --concurrency 4 --autorouter-timeout 600s",
+    "build:ci": "tsci build --ci --concurrency 4 --autorouter-timeout 600s",
     "snapshot": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
     "snapshot:update": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
     "start": "tsci dev",
