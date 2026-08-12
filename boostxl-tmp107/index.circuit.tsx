@@ -212,9 +212,9 @@ export default function Circuit() {
         <resistor
           name="R1"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
-          schX={-8.2}
-          schY={-2.1}
-          schRotation="0deg"
+          schX={-7.6}
+          schY={-2.3}
+          schRotation="90deg"
           manufacturerPartNumber="0603WAF3301T5E"
           supplierPartNumbers={{ jlcpcb: ["C22978"] }}
           resistance="3.3kohm"
@@ -226,8 +226,8 @@ export default function Circuit() {
         <resistor
           name="R2"
           schSectionName="TI_MHR035_FUNCTIONAL_CIRCUIT"
-          schX={-8.2}
-          schY={-5.2}
+          schX={-7.6}
+          schY={-3.6}
           manufacturerPartNumber="CQ03WAF1002T5E"
           supplierPartNumbers={{ jlcpcb: ["C516551"] }}
           resistance="10kohm"
