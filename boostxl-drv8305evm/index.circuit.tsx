@@ -113,11 +113,11 @@ function GroundEscape(props: {
 	);
 }
 
-export default function BoosterPackDrv8305() {
+export default function BoostxlDrv8305Evm() {
 	return (
 		<board
-			name="motor-drive-boosterpack"
-			title="Motor Drive BoosterPack"
+			name="boostxl-drv8305evm"
+			title="BOOSTXL-DRV8305EVM Motor Drive BoosterPack"
 			width="90mm"
 			height="75mm"
 			thickness="1.6mm"
@@ -502,7 +502,7 @@ export default function BoosterPackDrv8305() {
 			<hole name="H2" diameter="2.7mm" pcbX={42.7} pcbY={-35.3} />
 
 			<silkscreentext
-				text="DRV8305 3-PHASE BOOSTERPACK"
+				text="BOOSTXL-DRV8305EVM"
 				pcbX={0}
 				pcbY={17.2}
 				fontSize="1.1mm"

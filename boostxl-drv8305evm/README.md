@@ -1,8 +1,8 @@
-# DRV8305 Three-Phase Motor-Drive BoosterPack
+# BOOSTXL-DRV8305EVM Motor-Drive BoosterPack
 
 This project is a tscircuit reference implementation inspired by Texas Instruments' [BOOSTXL-DRV8305EVM](https://www.ti.com/tool/BOOSTXL-DRV8305EVM). It recreates the board's main electrical architecture and LaunchPad XL interface from TI's [BOOSTXL-DRV8305EVM User's Guide](https://www.ti.com/lit/pdf/SLVUAI8).
 
-Public package: [imrishabh18/motor-drive-boosterpack](https://tscircuit.com/imrishabh18/motor-drive-boosterpack). The registry release references UUID-pinned JLCSearch models on tscircuit's model CDN for its interactive 3D view.
+Public package: [imrishabh18/boostxl-drv8305evm](https://tscircuit.com/imrishabh18/boostxl-drv8305evm). The registry release references UUID-pinned JLCSearch models on tscircuit's model CDN for its interactive 3D view.
 
 ## What is included
 
@@ -69,7 +69,7 @@ bun run build
 bun run dev
 ```
 
-Select `motor-drive-boosterpack/index.circuit.tsx` in the development UI. Generated circuit JSON and preview assets are written under `dist/motor-drive-boosterpack/index/`.
+Select `boostxl-drv8305evm/index.circuit.tsx` in the development UI. Generated circuit JSON and preview assets are written under `dist/boostxl-drv8305evm/index/`.
 
 Routing is enabled. The validated layout routes 155 traces without autorouting errors. Ground pads use explicit short escapes into an `inner1` plane to avoid an unnecessarily congested driver fanout boundary.
 
