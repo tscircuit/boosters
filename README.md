@@ -11,6 +11,7 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 | [BOOSTXL-TLV8544PIR motion detector BoosterPack](./boostxl-tlv8544pir/) | Ultra-low-power PIR motion detector, quad nanopower amplifier signal chain, current monitoring, LEDs, and LaunchPad XL headers |
 | [BOOSTXL-DRV8305EVM motor-drive BoosterPack](./boostxl-drv8305evm/) | Four-layer, six-MOSFET three-phase bridge with DRV8305 gate driver, current and voltage sensing, 3.3 V buck supply, and LaunchPad XL headers |
 | [BOOSTXL-TMP107 temperature-sensor BoosterPack](./boostxl-tmp107/) | TMP107 daisy-chain temperature sensing, selectable UART transmit path, LaunchPad headers, and two breakaway sensor nodes |
+| [BOOSTXL-AUDIO audio BoosterPack](./boostxl-audio/) | 14-bit DAC/PWM audio, headset detection and routing, electret microphone preamplifier, speaker amplifier, and LaunchPad XL headers |
 
 Each BoosterPack lives in its own top-level directory with its circuit entrypoint, TypeScript component imports, and board-specific documentation. Shared deployment and TypeScript configuration remain at the repository root.
 

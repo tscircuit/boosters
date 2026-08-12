@@ -27,7 +27,9 @@
     "boostxl-tlv8544pir/**/*.ts",
     "boostxl-tlv8544pir/**/*.tsx",
     "boostxl-tmp107/**/*.ts",
-    "boostxl-tmp107/**/*.tsx"
+    "boostxl-tmp107/**/*.tsx",
+    "boostxl-audio/**/*.ts",
+    "boostxl-audio/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
