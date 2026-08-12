@@ -29,7 +29,9 @@
     "boostxl-tmp107/**/*.ts",
     "boostxl-tmp107/**/*.tsx",
     "boostxl-audio/**/*.ts",
-    "boostxl-audio/**/*.tsx"
+    "boostxl-audio/**/*.tsx",
+    "boostxl-uln2003/**/*.ts",
+    "boostxl-uln2003/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
