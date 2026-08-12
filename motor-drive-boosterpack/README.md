@@ -23,6 +23,8 @@ Public package: [imrishabh18/motor-drive-boosterpack](https://tscircuit.com/imri
 
 The visible power and interconnect parts below were resolved with `tsci import --jlcpcb`. Their canonical OBJ and STEP URLs include the model revision UUID and are attached directly to the proven logical footprints. This follows the existing boosters pattern, keeps binary model assets out of the repository, and preserves consistent 3D geometry through tscircuit's model CDN.
 
+Each custom part is implemented as a separate component under `imports/`. The root `index.circuit.tsx` is limited to board-level composition, schematic sheets, nets, and routing.
+
 | Reference | Part | JLCPCB/LCSC |
 | --- | --- | --- |
 | U1 | DRV8305NPHPR | C75602 |
