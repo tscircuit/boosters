@@ -259,33 +259,15 @@ export default () => (
     minTraceWidth="0.2mm"
     minViaHoleDiameter="0.3mm"
     minViaPadDiameter="0.45mm"
-    schAutoLayoutEnabled
   >
-    <schematicsheet name="InterfaceLeft" displayName="LaunchPad Interface — J1 & J3" sheetIndex={1}>
-      <schematicsection name="LaunchPad Headers" displayName="LaunchPad Headers" />
-    </schematicsheet>
-    <schematicsheet name="InterfaceRight" displayName="LaunchPad Interface — J2 & J4" sheetIndex={2}>
-      <schematicsection name="LaunchPad Headers" displayName="LaunchPad Headers" />
-    </schematicsheet>
-    <schematicsheet name="Power" displayName="Power Indicators" sheetIndex={3}>
-      <schematicsection name="Power" displayName="Power Indicators" />
-    </schematicsheet>
-    <schematicsheet name="Display" displayName="Display" sheetIndex={4}>
-      <schematicsection name="Display" displayName="SPI TFT Display" />
-    </schematicsheet>
-    <schematicsheet name="Controls" displayName="Human Interface Controls" sheetIndex={5}>
-      <schematicsection name="Controls" displayName="Joystick & Buttons" />
-    </schematicsheet>
-    <schematicsheet name="Sensors" displayName="Environmental & Motion Sensors" sheetIndex={6}>
-      <schematicsection name="Sensors" displayName="I2C Sensors" />
-    </schematicsheet>
-    <schematicsheet name="Audio" displayName="Microphone Front End" sheetIndex={7}>
-      <schematicsection name="Audio" displayName="Microphone Amplifier" />
-    </schematicsheet>
-    <schematicsheet name="Outputs" displayName="LED, Buzzer & Expansion" sheetIndex={8}>
-      <schematicsection name="Outputs" displayName="RGB LED & Buzzer Drivers" />
-      <schematicsection name="Expansion" displayName="Servo & Clip Expansion" />
-    </schematicsheet>
+    <schematicsheet name="Interface" displayName="Interface, Display & Controls" sheetIndex={1} />
+    <schematicsheet name="Sensing" displayName="Sensors & Microphone" sheetIndex={2} />
+    <schematicsheet name="Outputs" displayName="Outputs, Expansion & Power" sheetIndex={3} />
+
+    <group name="InterfaceSheetSchematic" pcbX={0} pcbY={0} schSheetName="Interface" schX={0} schY={0}>
+    <schematicsection name="Interface" displayName="LaunchPad Interface" />
+    <schematicsection name="Display" displayName="SPI TFT Display" />
+    <schematicsection name="Controls" displayName="Joystick & Buttons" />
 
     <silkscreentext text="EDU BOOSTERPACK TS" pcbX={0} pcbY={25.8} fontSize="1.6mm" />
     <silkscreentext text="LaunchPad XL compatible • 3V3 logic" pcbX={0} pcbY={23.7} fontSize="0.9mm" />
@@ -293,12 +275,13 @@ export default () => (
     <silkscreentext text="SENSORS" pcbX={5} pcbY={20} fontSize="1mm" />
     <silkscreentext text="BUTTONS" pcbX={49} pcbY={21.5} fontSize="1mm" />
 
-    <group name="InterfaceLeftSchematic" pcbX={0} pcbY={0} schSheetName="InterfaceLeft" schX={0} schY={0} schAutoLayoutEnabled>
+    <group name="InterfaceSchematic" pcbX={0} pcbY={0} schX={-11.5} schY={0}>
     <pinheader
       name="J1"
       pinCount={10}
       pitch="2.54mm"
       gender="female"
+      layer="bottom"
       pcbX={-22.86}
       pcbY={-1.27}
       pcbRotation={90}
@@ -307,13 +290,16 @@ export default () => (
       showSilkscreenPinLabels
       pinLabels={["3V3", "JOY_X", "J1_3", "J1_4", "JOY_SEL", "MIC_IN", "LCD_SCLK", "LIGHT_INT", "I2C_SCL", "I2C_SDA"]}
       pinAttributes={{ pin3: { doNotConnect: true }, pin4: { doNotConnect: true } }}
-      schSheetName="InterfaceLeft"
+      schSectionName="Interface"
+      schX={-1.5}
+      schY={1.5}
     />
     <pinheader
       name="J3"
       pinCount={10}
       pitch="2.54mm"
       gender="female"
+      layer="bottom"
       pcbX={-20.32}
       pcbY={-1.27}
       pcbRotation={90}
@@ -329,15 +315,16 @@ export default () => (
         pin9: { doNotConnect: true },
         pin10: { doNotConnect: true },
       }}
-      schSheetName="InterfaceLeft"
+      schSectionName="Interface"
+      schX={-1.5}
+      schY={-1.5}
     />
-    </group>
-    <group name="InterfaceRightSchematic" pcbX={0} pcbY={0} schSheetName="InterfaceRight" schX={0} schY={0} schAutoLayoutEnabled>
     <pinheader
       name="J4"
       pinCount={10}
       pitch="2.54mm"
       gender="female"
+      layer="bottom"
       pcbX={20.32}
       pcbY={-1.27}
       pcbRotation={90}
@@ -346,13 +333,16 @@ export default () => (
       showSilkscreenPinLabels
       pinLabels={["LCD_DC", "BTN2", "BTN1", "GATOR", "J4_35", "J4_36", "RGB_B", "RGB_G", "RGB_R_BL", "BUZZER"]}
       pinAttributes={{ pin5: { doNotConnect: true }, pin6: { doNotConnect: true } }}
-      schSheetName="InterfaceRight"
+      schSectionName="Interface"
+      schX={1.5}
+      schY={-1.5}
     />
     <pinheader
       name="J2"
       pinCount={10}
       pitch="2.54mm"
       gender="female"
+      layer="bottom"
       pcbX={22.86}
       pcbY={-1.27}
       pcbRotation={90}
@@ -366,9 +356,10 @@ export default () => (
         pin6: { doNotConnect: true },
         pin8: { doNotConnect: true },
       }}
-      schSheetName="InterfaceRight"
+      schSectionName="Interface"
+      schX={1.5}
+      schY={1.5}
     />
-    </group>
 
     <T from=".J1 > .pin1" to="net.V3V3" />
     <T from=".J1 > .pin2" to="net.JOY_X" />
@@ -396,8 +387,9 @@ export default () => (
     <T from=".J2 > .pin7" to="net.LCD_RST" />
     <T from=".J2 > .pin9" to="net.SERVO_PWM" />
     <T from=".J2 > .pin10" to="net.GND" />
+    </group>
 
-    <group name="DisplaySchematic" pcbX={0} pcbY={0} schSheetName="Display" schX={0} schY={0} schAutoLayoutEnabled>
+    <group name="DisplaySchematic" pcbX={0} pcbY={0} schX={-1.5} schY={0} schAutoLayoutEnabled>
     <chip
       name="U5"
       manufacturerPartNumber="1.8IN-ST7735-SPI-TFT"
@@ -423,11 +415,11 @@ export default () => (
       footprint={displayFootprint}
       pcbX={0}
       pcbY={8}
-      schSheetName="Display"
+      schSectionName="Display"
     />
-    <JlcResistor name="R1" resistance="6.8" footprint="0603" pcbX={15} pcbY={20.5} schSheetName="Display" />
-    <JlcCapacitor name="C4" capacitance="100nF" footprint="0603" pcbX={-12} pcbY={20.5} schSheetName="Display" />
-    <JlcCapacitor name="C5" capacitance="10uF" footprint="0805" pcbX={-15.5} pcbY={20.5} schSheetName="Display" />
+    <JlcResistor name="R1" resistance="6.8" footprint="0603" pcbX={15} pcbY={20.5} schSectionName="Display" />
+    <JlcCapacitor name="C4" capacitance="100nF" footprint="0603" pcbX={-12} pcbY={20.5} schSectionName="Display" />
+    <JlcCapacitor name="C5" capacitance="10uF" footprint="0805" pcbX={-15.5} pcbY={20.5} schSectionName="Display" />
     <T from=".U5 > .GND1" to="net.GND" />
     <T from=".U5 > .GND2" to="net.GND" />
     <T from=".U5 > .VCC" to="net.V3V3" />
@@ -445,7 +437,7 @@ export default () => (
     <T from=".C5 > .pin2" to="net.GND" />
     </group>
 
-    <group name="ControlsSchematic" pcbX={0} pcbY={0} schSheetName="Controls" schX={0} schY={0} schAutoLayoutEnabled>
+    <group name="ControlsSchematic" pcbX={0} pcbY={0} schX={9.5} schY={-1} schAutoLayoutEnabled>
     <YA13_FL7_4_B5Ka_45_10__R_Y06
       name="U6"
       symbol={undefined}
@@ -465,14 +457,14 @@ export default () => (
       }}
       pcbX={-40.64}
       pcbY={2.54}
-      schSheetName="Controls"
+      schSectionName="Controls"
     />
     <silkscreencircle pcbX={-40.64} pcbY={2.54} radius="10mm" isOutline strokeWidth="0.35mm" />
     <silkscreencircle pcbX={-40.64} pcbY={2.54} radius="7.2mm" isOutline strokeWidth="0.2mm" />
     <silkscreentext text="JOYSTICK" pcbX={-40.64} pcbY={-8.66} fontSize="1mm" />
-    <JlcResistor name="R2" resistance="10k" footprint="0603" pcbX={-50} pcbY={-8} schSheetName="Controls" />
-    <JlcCapacitor name="C6" capacitance="10nF" footprint="0603" pcbX={-51} pcbY={15} schSheetName="Controls" />
-    <JlcCapacitor name="C7" capacitance="10nF" footprint="0603" pcbX={-47.5} pcbY={15.5} schSheetName="Controls" />
+    <JlcResistor name="R2" resistance="10k" footprint="0603" pcbX={-50} pcbY={-8} schSectionName="Controls" />
+    <JlcCapacitor name="C6" capacitance="10nF" footprint="0603" pcbX={-51} pcbY={15} schSectionName="Controls" />
+    <JlcCapacitor name="C7" capacitance="10nF" footprint="0603" pcbX={-47.5} pcbY={15.5} schSectionName="Controls" />
     <T from=".U6 > .pin1" to="net.V3V3" />
     <T from=".U6 > .pin2" to="net.JOY_X" />
     <T from=".U6 > .pin3" to="net.GND" />
@@ -499,7 +491,7 @@ export default () => (
       pcbX={48.26}
       pcbY={14}
       pcbRotation={-45}
-      schSheetName="Controls"
+      schSectionName="Controls"
     />
     <pushbutton
       name="SW2"
@@ -510,10 +502,10 @@ export default () => (
       pcbX={48.26}
       pcbY={-4.5}
       pcbRotation={-45}
-      schSheetName="Controls"
+      schSectionName="Controls"
     />
-    <JlcResistor name="R3" resistance="10k" footprint="0603" pcbX={37} pcbY={13.5} schSheetName="Controls" />
-    <JlcResistor name="R4" resistance="10k" footprint="0603" pcbX={36.5} pcbY={-4} schSheetName="Controls" />
+    <JlcResistor name="R3" resistance="10k" footprint="0603" pcbX={37} pcbY={13.5} schSectionName="Controls" />
+    <JlcResistor name="R4" resistance="10k" footprint="0603" pcbX={36.5} pcbY={-4} schSectionName="Controls" />
     <T from=".SW1 > .SIG" to="net.BTN1" />
     <T from=".SW1 > .GND" to="net.GND" />
     <T from=".R3 > .pin1" to="net.V3V3" />
@@ -523,10 +515,14 @@ export default () => (
     <T from=".R4 > .pin1" to="net.V3V3" />
     <T from=".R4 > .pin2" to="net.BTN2" />
     </group>
+    </group>
 
-    <group name="SensorsSchematic" pcbX={0} pcbY={0} schSheetName="Sensors" schX={0} schY={0} schAutoLayoutEnabled>
-    <JlcResistor name="R5" resistance="10k" footprint="0603" pcbX={-9} pcbY={20.5} schSheetName="Sensors" />
-    <JlcResistor name="R6" resistance="10k" footprint="0603" pcbX={-6} pcbY={20.5} schSheetName="Sensors" />
+    <group name="SensingSheetSchematic" pcbX={0} pcbY={0} schSheetName="Sensing" schX={0} schY={0}>
+    <schematicsection name="Sensors" displayName="Environmental & Motion Sensors" />
+    <schematicsection name="Audio" displayName="Microphone Front End" />
+    <group name="SensorsSchematic" pcbX={0} pcbY={0} schX={-3.3} schY={-0.4} schAutoLayoutEnabled>
+    <JlcResistor name="R5" resistance="10k" footprint="0603" pcbX={-9} pcbY={20.5} schSectionName="Sensors" />
+    <JlcResistor name="R6" resistance="10k" footprint="0603" pcbX={-6} pcbY={20.5} schSectionName="Sensors" />
     <T from=".R5 > .pin1" to="net.V3V3" />
     <T from=".R5 > .pin2" to="net.I2C_SCL" />
     <T from=".R6 > .pin1" to="net.V3V3" />
@@ -536,9 +532,9 @@ export default () => (
       name="U1"
       pcbX={-1}
       pcbY={20.5}
-      schSheetName="Sensors"
+      schSectionName="Sensors"
     />
-    <JlcCapacitor name="C1" capacitance="100nF" footprint="0603" pcbX={2.5} pcbY={20.5} schSheetName="Sensors" />
+    <JlcCapacitor name="C1" capacitance="100nF" footprint="0603" pcbX={2.5} pcbY={20.5} schSectionName="Sensors" />
     <tracehint for=".U1 > .INT" offset={{ x: -1.2, y: -1.2 }} />
     <T from=".U1 > .VDD" to="net.V3V3" />
     <T from=".U1 > .ADDR" to="net.GND" />
@@ -554,9 +550,9 @@ export default () => (
       name="U2"
       pcbX={7}
       pcbY={20.5}
-      schSheetName="Sensors"
+      schSectionName="Sensors"
     />
-    <JlcCapacitor name="C2" capacitance="100nF" footprint="0603" pcbX={11} pcbY={20.5} schSheetName="Sensors" />
+    <JlcCapacitor name="C2" capacitance="100nF" footprint="0603" pcbX={11} pcbY={20.5} schSectionName="Sensors" />
     <T from=".U2 > .V_POS" to="net.V3V3" />
     <T from=".U2 > .GND" to="net.GND" />
     <T from=".U2 > .EP" to="net.GND" />
@@ -571,10 +567,10 @@ export default () => (
       name="U3"
       pcbX={31.75}
       pcbY={5.1}
-      schSheetName="Sensors"
+      schSectionName="Sensors"
       noConnect={["NC1", "NC2", "INT2", "RES", "ADC1", "ADC2", "ADC3"]}
     />
-    <JlcCapacitor name="C3" capacitance="100nF" footprint="0603" pcbX={36.5} pcbY={5.1} schSheetName="Sensors" />
+    <JlcCapacitor name="C3" capacitance="100nF" footprint="0603" pcbX={36.5} pcbY={5.1} schSectionName="Sensors" />
     <T from=".U3 > .VDD_IO" to="net.V3V3" />
     <T from=".U3 > .VDD" to="net.V3V3" />
     <T from=".U3 > .GND1" to="net.GND" />
@@ -588,7 +584,7 @@ export default () => (
     <T from=".C3 > .pin2" to="net.GND" />
     </group>
 
-    <group name="AudioSchematic" pcbX={0} pcbY={0} schSheetName="Audio" schX={0} schY={0} schAutoLayoutEnabled>
+    <group name="AudioSchematic" pcbX={0} pcbY={0} schX={6.3} schY={-0.1} schAutoLayoutEnabled>
     <chip
       name="U7"
       manufacturerPartNumber="CMA-4544PF-W"
@@ -601,23 +597,23 @@ export default () => (
       footprint={microphoneFootprint}
       pcbX={-30.48}
       pcbY={-21.59}
-      schSheetName="Audio"
+      schSectionName="Audio"
     />
     <OPA344NA_250
       name="U4"
       pcbX={-31}
       pcbY={-13.8}
       pcbRotation={90}
-      schSheetName="Audio"
+      schSectionName="Audio"
     />
-    <JlcResistor name="R7" resistance="2.2k" footprint="0603" pcbX={-36.5} pcbY={-18.5} schSheetName="Audio" />
-    <JlcCapacitor name="C8" capacitance="1uF" footprint="0603" pcbX={-34.5} pcbY={-12.5} schSheetName="Audio" />
-    <JlcResistor name="R8" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-9} schSheetName="Audio" />
-    <JlcResistor name="R9" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-12} schSheetName="Audio" />
-    <JlcCapacitor name="C9" capacitance="1uF" footprint="0603" pcbX={-22} pcbY={-18.5} schSheetName="Audio" />
-    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-9} schSheetName="Audio" />
-    <JlcResistor name="R11" resistance="10k" footprint="0603" pcbX={-26} pcbY={-15.8} schSheetName="Audio" />
-    <JlcCapacitor name="C10" capacitance="100nF" footprint="0603" pcbX={-35} pcbY={-10} schSheetName="Audio" />
+    <JlcResistor name="R7" resistance="2.2k" footprint="0603" pcbX={-36.5} pcbY={-18.5} schSectionName="Audio" />
+    <JlcCapacitor name="C8" capacitance="1uF" footprint="0603" pcbX={-34.5} pcbY={-12.5} schSectionName="Audio" />
+    <JlcResistor name="R8" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-9} schSectionName="Audio" />
+    <JlcResistor name="R9" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-12} schSectionName="Audio" />
+    <JlcCapacitor name="C9" capacitance="1uF" footprint="0603" pcbX={-22} pcbY={-18.5} schSectionName="Audio" />
+    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-9} schSectionName="Audio" />
+    <JlcResistor name="R11" resistance="10k" footprint="0603" pcbX={-26} pcbY={-15.8} schSectionName="Audio" />
+    <JlcCapacitor name="C10" capacitance="100nF" footprint="0603" pcbX={-35} pcbY={-10} schSectionName="Audio" />
     <T from=".U7 > .POS" to="net.MIC_BIAS" />
     <T from=".R7 > .pin2" to="net.MIC_BIAS" />
     <T from=".R7 > .pin1" to="net.V3V3" />
@@ -642,8 +638,13 @@ export default () => (
     <T from=".C10 > .pin1" to="net.V3V3" />
     <T from=".C10 > .pin2" to="net.GND" />
     </group>
+    </group>
 
-    <group name="OutputsSchematic" pcbX={0} pcbY={0} schSheetName="Outputs" schX={0} schY={0} schAutoLayoutEnabled>
+    <group name="OutputsSheetSchematic" pcbX={0} pcbY={0} schSheetName="Outputs" schX={0} schY={0}>
+    <schematicsection name="Outputs" displayName="RGB LED & Buzzer Drivers" />
+    <schematicsection name="Expansion" displayName="Servo & Clip Expansion" />
+    <schematicsection name="Power" displayName="Power Indicators" />
+    <group name="OutputsSchematic" pcbX={0} pcbY={0} schX={-9.2} schY={0.5}>
     <chip
       name="U8"
       manufacturerPartNumber="CLV1A-FKB-CJ1M1F1BB7R4S3"
@@ -658,17 +659,19 @@ export default () => (
       footprint={rgbFootprint}
       pcbX={33}
       pcbY={-11.5}
-      schSheetName="Outputs"
+      schX={-1}
+      schY={1.3}
+      schSectionName="Outputs"
     />
-    <JlcResistor name="R12" resistance="330" footprint="0603" pcbX={37} pcbY={-9} schSheetName="Outputs" />
-    <JlcResistor name="R13" resistance="330" footprint="0603" pcbX={37} pcbY={-13} schSheetName="Outputs" />
-    <JlcResistor name="R14" resistance="330" footprint="0603" pcbX={40} pcbY={-20} schSheetName="Outputs" />
-    <JlcTransistor name="Q1" type="npn" footprint="sot23" pcbX={41} pcbY={-9} schSheetName="Outputs" />
-    <JlcTransistor name="Q2" type="npn" footprint="sot23" pcbX={41} pcbY={-13} schSheetName="Outputs" />
-    <JlcTransistor name="Q3" type="npn" footprint="sot23" pcbX={41} pcbY={-17} schSheetName="Outputs" />
-    <JlcResistor name="R15" resistance="4.7k" footprint="0603" pcbX={37} pcbY={-7} schSheetName="Outputs" />
-    <JlcResistor name="R16" resistance="4.7k" footprint="0603" pcbX={45} pcbY={-13} schSheetName="Outputs" />
-    <JlcResistor name="R17" resistance="4.7k" footprint="0603" pcbX={45} pcbY={-17} schSheetName="Outputs" />
+    <JlcResistor name="R12" resistance="330" footprint="0603" pcbX={37} pcbY={-9} schX={-4} schY={0.2} schSectionName="Outputs" />
+    <JlcResistor name="R13" resistance="330" footprint="0603" pcbX={37} pcbY={-13} schX={2} schY={0.2} schSectionName="Outputs" />
+    <JlcResistor name="R14" resistance="330" footprint="0603" pcbX={40} pcbY={-20} schX={5} schY={1.3} schSectionName="Outputs" />
+    <JlcTransistor name="Q1" type="npn" footprint="sot23" pcbX={41} pcbY={-9} schX={-4} schY={-1.2} schSectionName="Outputs" />
+    <JlcTransistor name="Q2" type="npn" footprint="sot23" pcbX={41} pcbY={-13} schX={0} schY={-1.2} schSectionName="Outputs" />
+    <JlcTransistor name="Q3" type="npn" footprint="sot23" pcbX={41} pcbY={-17} schX={4} schY={-1.2} schSectionName="Outputs" />
+    <JlcResistor name="R15" resistance="4.7k" footprint="0603" pcbX={37} pcbY={-7} schX={-4} schY={-3.2} schSectionName="Outputs" />
+    <JlcResistor name="R16" resistance="4.7k" footprint="0603" pcbX={45} pcbY={-13} schX={0} schY={-3.2} schSectionName="Outputs" />
+    <JlcResistor name="R17" resistance="4.7k" footprint="0603" pcbX={45} pcbY={-17} schX={4} schY={-3.2} schSectionName="Outputs" />
     <T from=".U8 > .ANODE" to="net.V3V3" />
     <T from=".U8 > .RED" to="net.RGB_RED_LED" />
     <T from=".R12 > .pin1" to="net.RGB_RED_LED" />
@@ -707,11 +710,13 @@ export default () => (
       footprint={buzzerFootprint}
       pcbX={31.75}
       pcbY={-20.32}
-      schSheetName="Outputs"
+      schX={1.5}
+      schY={3.7}
+      schSectionName="Outputs"
     />
-    <JlcTransistor name="Q4" type="npn" footprint="sot23" pcbX={40} pcbY={-23} schSheetName="Outputs" />
-    <JlcResistor name="R18" resistance="2.2k" footprint="0603" pcbX={44} pcbY={-23} schSheetName="Outputs" />
-    <diode name="D1" footprint="sod323" cadModel={sod323CadModel} pcbX={37} pcbY={-26.5} schSheetName="Outputs" />
+    <JlcTransistor name="Q4" type="npn" footprint="sot23" pcbX={40} pcbY={-23} schX={7.5} schY={-1.2} schSectionName="Outputs" />
+    <JlcResistor name="R18" resistance="2.2k" footprint="0603" pcbX={44} pcbY={-23} schX={7.5} schY={-3.2} schSectionName="Outputs" />
+    <diode name="D1" footprint="sod323" cadModel={sod323CadModel} pcbX={37} pcbY={-26.5} schX={5} schY={3.7} schSectionName="Outputs" />
     <T from=".U9 > .POS" to="net.V5V" />
     <T from=".U9 > .NEG" to="net.BUZZER_SINK" />
     <T from=".Q4 > .collector" to="net.BUZZER_SINK" />
@@ -721,7 +726,9 @@ export default () => (
     <T from=".R18 > .pin2" to="net.BUZZER" />
     <T from=".D1 > .anode" to="net.BUZZER_SINK" />
     <T from=".D1 > .cathode" to="net.V5V" />
+    </group>
 
+    <group name="ExpansionSchematic" pcbX={0} pcbY={0} schX={3.3} schY={1} schAutoLayoutEnabled>
     <pinheader
       name="JSERVO"
       doNotPlace
@@ -734,7 +741,7 @@ export default () => (
       pcbRotation={0}
       pinLabels={["GND", "5V", "PWM"]}
       showSilkscreenPinLabels
-      schSheetName="Outputs"
+      schSectionName="Expansion"
     />
     <T from=".JSERVO > .pin1" to="net.GND" />
     <T from=".JSERVO > .pin2" to="net.V5V" />
@@ -744,18 +751,18 @@ export default () => (
     <platedhole name="GND_CLIP_B" shape="circle" holeDiameter="2.4mm" outerDiameter="3.4mm" pcbX={-23.6} pcbY={22.86} connectsTo="net.GND" />
     <platedhole name="SIG_CLIP_A" shape="circle" holeDiameter="2.4mm" outerDiameter="3.4mm" pcbX={23.6} pcbY={22.86} connectsTo="net.GATOR" />
     <platedhole name="SIG_CLIP_B" shape="circle" holeDiameter="2.4mm" outerDiameter="3.4mm" pcbX={27.2} pcbY={22.86} connectsTo="net.GATOR" />
-    <JlcResistor name="R19" resistance="10k" footprint="0603" pcbX={29} pcbY={18.5} schSheetName="Outputs" />
+    <JlcResistor name="R19" resistance="10k" footprint="0603" pcbX={29} pcbY={18.5} schSectionName="Expansion" />
     <T from=".R19 > .pin1" to="net.V3V3" />
     <T from=".R19 > .pin2" to="net.GATOR" />
     <silkscreentext text="GND CLIP" pcbX={-25.4} pcbY={18.8} fontSize="0.9mm" />
     <silkscreentext text="TOUCH / CLIP" pcbX={25.4} pcbY={18.8} fontSize="0.9mm" />
     </group>
 
-    <group name="PowerSchematic" pcbX={0} pcbY={0} schSheetName="Power" schX={0} schY={0} schAutoLayoutEnabled>
-    <JlcLed name="D3V3" color="green" footprint="0603" pcbX={-53} pcbY={-13} schSheetName="Power" />
-    <JlcResistor name="R3V3" resistance="1k" footprint="0603" pcbX={-50} pcbY={-13} schSheetName="Power" />
-    <JlcLed name="D5V" color="red" footprint="0603" pcbX={-53} pcbY={-18} schSheetName="Power" />
-    <JlcResistor name="R5V" resistance="1k" footprint="0603" pcbX={-50} pcbY={-18} schSheetName="Power" />
+    <group name="PowerSchematic" pcbX={0} pcbY={0} schX={11} schY={0.6} schAutoLayoutEnabled>
+    <JlcLed name="D3V3" color="green" footprint="0603" pcbX={-53} pcbY={-13} schSectionName="Power" />
+    <JlcResistor name="R3V3" resistance="1k" footprint="0603" pcbX={-50} pcbY={-13} schSectionName="Power" />
+    <JlcLed name="D5V" color="red" footprint="0603" pcbX={-53} pcbY={-18} schSectionName="Power" />
+    <JlcResistor name="R5V" resistance="1k" footprint="0603" pcbX={-50} pcbY={-18} schSectionName="Power" />
     <T from="net.V3V3" to=".R3V3 > .pin1" />
     <T from=".R3V3 > .pin2" to="net.PWR_3V3_LED" />
     <T from=".D3V3 > .anode" to="net.PWR_3V3_LED" />
@@ -766,6 +773,7 @@ export default () => (
     <T from=".D5V > .cathode" to="net.GND" />
     <silkscreentext text="3V3" pcbX={-56} pcbY={-13} fontSize="0.9mm" />
     <silkscreentext text="5V" pcbX={-56} pcbY={-18} fontSize="0.9mm" />
+    </group>
     </group>
 
     <copperpour layer="bottom" connectsTo="net.GND" clearance="0.25mm" boardEdgeMargin="0.4mm" />

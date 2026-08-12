@@ -7,7 +7,7 @@ This is an original, modernized reference design. It is not a pin-for-pin manufa
 ## Board overview
 
 - 127 mm × 55.88 mm pill-shaped PCB, 1.6 mm thick, two copper layers
-- Four 1×10 female headers in the standard 40-pin BoosterPack XL arrangement
+- Four bottom-mounted 1×10 female headers in the standard 40-pin BoosterPack XL arrangement
 - 1.8-inch ST7735-style SPI TFT interface
 - OPT3001 ambient light sensor with interrupt output
 - TMP117 digital temperature sensor with interrupt output
@@ -31,18 +31,21 @@ The legacy Crystalfontz TFT panel is not present in JLCPCB's current catalog. It
 
 ## Schematic organization
 
-The schematic is divided into eight functional sheets so each subsystem can be reviewed independently:
+The schematic is divided across three sheets, with generous spacing between the functional sections on each sheet:
 
-1. LaunchPad Interface — J1 & J3
-2. LaunchPad Interface — J2 & J4
-3. Power Indicators
-4. Display
-5. Human Interface Controls
-6. Environmental & Motion Sensors
-7. Microphone Front End
-8. LED, Buzzer & Expansion
+1. Interface, Display & Controls
+   - LaunchPad Interface
+   - SPI TFT Display
+   - Joystick & Buttons
+2. Sensors & Microphone
+   - Environmental & Motion Sensors
+   - Microphone Front End
+3. Outputs, Expansion & Power
+   - RGB LED & Buzzer Drivers
+   - Servo & Clip Expansion
+   - Power Indicators
 
-Connections between sheets use explicit electrical net names such as `I2C_SCL`, `LCD_MOSI`, `JOY_X`, and `MIC_IN`. Internal nodes also have semantic names including `MIC_BIAS`, `MIC_FB`, `RGB_RED_SINK`, and `BUZZER_BASE`; generated component-selector paths are not used as visible net labels.
+Connections between sections and sheets use explicit electrical net names such as `I2C_SCL`, `LCD_MOSI`, `JOY_X`, and `MIC_IN`. Internal nodes also have semantic names including `MIC_BIAS`, `MIC_FB`, `RGB_RED_SINK`, and `BUZZER_BASE`; generated component-selector paths are not used as visible net labels.
 
 ## LaunchPad header assignment
 
@@ -87,9 +90,9 @@ bun run typecheck
 bun run build
 ```
 
-Run these commands from the repository root. The build emits `circuit.json`, `pcb.svg`, and `schematic.svg` under `dist/boostxl-edumkii/`. The Circuit JSON contains all eight schematic sheets; compatible viewers expose them through the schematic sheet selector.
+Run these commands from the repository root. The build emits `circuit.json`, `pcb.svg`, and schematic SVG output under `dist/boostxl-edumkii/`. The Circuit JSON contains three schematic sheets with eight named functional sections.
 
-The verified build runs the placement, routing, netlist, and pin-specification checks without bypass flags. Its generated `circuit.json` contains zero error and zero warning records. Narrow explicit courtyards preserve the required 2.54 mm spacing between adjacent BoosterPack header rows, circular courtyards reserve the full joystick, microphone, and buzzer bodies, rectangular courtyards protect both pushbutton envelopes, and separated clip-pad annuli satisfy copper clearance rules.
+The verified build runs the placement, routing, netlist, and pin-specification checks without bypass flags. It currently reports supplier-footprint mismatch warnings for the custom header and LED footprints, and the automatic router can produce tight via-to-pad clearance diagnostics that should be reviewed before fabrication. Narrow explicit courtyards preserve the required 2.54 mm spacing between adjacent BoosterPack header rows, circular courtyards reserve the full joystick, microphone, and buzzer bodies, rectangular courtyards protect both pushbutton envelopes, and separated clip-pad annuli satisfy copper clearance rules.
 
 The root build allows up to five minutes for a cache-free autoroute of this dense two-layer board. Subsequent builds can reuse tscircuit's route cache and typically complete much faster.
 
