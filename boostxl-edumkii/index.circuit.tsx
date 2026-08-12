@@ -257,6 +257,8 @@ export default () => (
     autorouterEffortLevel="5x"
     defaultTraceWidth="0.25mm"
     minTraceWidth="0.2mm"
+    minViaHoleDiameter="0.3mm"
+    minViaPadDiameter="0.45mm"
     schAutoLayoutEnabled
   >
     <schematicsheet name="InterfaceLeft" displayName="LaunchPad Interface — J1 & J3" sheetIndex={1}>
