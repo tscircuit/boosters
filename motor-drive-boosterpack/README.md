@@ -2,7 +2,7 @@
 
 This project is a tscircuit reference implementation inspired by Texas Instruments' [BOOSTXL-DRV8305EVM](https://www.ti.com/tool/BOOSTXL-DRV8305EVM). It recreates the board's main electrical architecture and LaunchPad XL interface from TI's [BOOSTXL-DRV8305EVM User's Guide](https://www.ti.com/lit/pdf/SLVUAI8).
 
-Public package: [imrishabh18/motor-drive-boosterpack](https://tscircuit.com/imrishabh18/motor-drive-boosterpack). The registry release uses the downloaded JLCSearch OBJ assets for its interactive 3D view.
+Public package: [imrishabh18/motor-drive-boosterpack](https://tscircuit.com/imrishabh18/motor-drive-boosterpack). The registry release references UUID-pinned JLCSearch models on tscircuit's model CDN for its interactive 3D view.
 
 ## What is included
 
@@ -21,7 +21,7 @@ Public package: [imrishabh18/motor-drive-boosterpack](https://tscircuit.com/imri
 - Explicit short GND escapes into an `inner1` ground plane, plus top and bottom ground pours
 - Bulk capacitors at the outer side edges and J3/J4 terminal openings facing the outer top edge
 
-The visible power and interconnect parts below were imported with `tsci import --jlcpcb --download`. The JLCSearch OBJ assets used by the circuit are stored under `imports/` and attached directly to the proven logical footprints, so the 3D view does not depend on missing model-cache entries. Redundant STEP assets are intentionally omitted from this repository.
+The visible power and interconnect parts below were resolved with `tsci import --jlcpcb`. Their canonical OBJ and STEP URLs include the model revision UUID and are attached directly to the proven logical footprints. This follows the existing boosters pattern, keeps binary model assets out of the repository, and preserves consistent 3D geometry through tscircuit's model CDN.
 
 | Reference | Part | JLCPCB/LCSC |
 | --- | --- | --- |

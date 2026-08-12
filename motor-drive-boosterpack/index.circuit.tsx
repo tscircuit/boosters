@@ -1,12 +1,40 @@
-import csd18540ObjPath from "./imports/CSD18540Q5B/CSD18540Q5B.obj"
-import drv8305ObjPath from "./imports/DRV8305NPHPR/DRV8305NPHPR.obj"
-import lmr16006ObjPath from "./imports/LMR16006XDDCR/LMR16006XDDCR.obj"
-import headerObjPath from "./imports/PM254_2_10_Z_8_5/PM254_2_10_Z_8_5.obj"
-import terminal3ObjPath from "./imports/WJ500V_5_08_03P_14_00A/WJ500V_5_08_03P_14_00A.obj"
-import terminal2ObjPath from "./imports/WJ500V_5_08_2P/WJ500V_5_08_2P.obj"
-import shuntObjPath from "./imports/HoLLR2512_3W_7mR_1_/HoLLR2512_3W_7mR_1_.obj"
-import inductorObjPath from "./imports/SMNR8040_150MT/SMNR8040_150MT.obj"
-import edgeCapObjPath from "./imports/LKME1601J331MF/LKME1601J331MF.obj"
+const CAD_MODELS = {
+  mosfet: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C86513.obj?uuid=ed84f5dd80b4414bacf3798e6484c98f",
+  },
+  driver: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C75602.obj?uuid=f0220855bd3041998a0835a0b1f707e8",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C75602.step?uuid=f0220855bd3041998a0835a0b1f707e8",
+  },
+  shunt: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C2985710.obj?uuid=5f20a17164ab44638c27c65eb4937b18",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C2985710.step?uuid=5f20a17164ab44638c27c65eb4937b18",
+  },
+  edgeCapacitor: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C442946.obj?uuid=f40519fab00548e1a81f96812540c2eb",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C442946.step?uuid=f40519fab00548e1a81f96812540c2eb",
+  },
+  buckRegulator: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C87080.obj?uuid=229b69761e2c45dba6a83d8866dec72d",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C87080.step?uuid=229b69761e2c45dba6a83d8866dec72d",
+  },
+  inductor: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C467156.obj?uuid=6dd7f26bae554279b6f5912a8916ae99",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C467156.step?uuid=6dd7f26bae554279b6f5912a8916ae99",
+  },
+  header: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C2897411.obj?uuid=b43d0c057b6b4175ab19ee916be5b1eb",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C2897411.step?uuid=b43d0c057b6b4175ab19ee916be5b1eb",
+  },
+  terminal2: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C8465.obj?uuid=d60ef5d423934d3393dc75fa0a07b6bd",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C8465.step?uuid=d60ef5d423934d3393dc75fa0a07b6bd",
+  },
+  terminal3: {
+    objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C72334.obj?uuid=3ce8efb5088242eb9ba049a12326c3b5",
+    stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C72334.step?uuid=3ce8efb5088242eb9ba049a12326c3b5",
+  },
+} as const
 
 const DRV8305_PINS = {
   pin1: "EN_GATE",
@@ -307,7 +335,7 @@ const ROUTER = {
 }
 
 const EDGE_CAPACITOR_CAD_MODEL = {
-  objUrl: edgeCapObjPath,
+  ...CAD_MODELS.edgeCapacitor,
   pcbRotationOffset: 0,
   modelOriginPosition: {
     x: 0.004999999999999893,
@@ -456,7 +484,7 @@ function PowerMosfet(props: {
       footprint={<PowerMosfetFootprint />}
       pinLabels={POWER_MOSFET_PINS}
       cadModel={{
-        objUrl: csd18540ObjPath,
+        ...CAD_MODELS.mosfet,
         pcbRotationOffset: 90,
         modelOriginPosition: {
           x: -0.06750050000005103,
@@ -569,7 +597,7 @@ function PhaseBridge(props: {
         supplierPartNumbers={{ jlcpcb: ["C2985710"] }}
         footprint={<Shunt2512Footprint />}
         cadModel={{
-          objUrl: shuntObjPath,
+          ...CAD_MODELS.shunt,
           pcbRotationOffset: 0,
           modelOriginPosition: { x: 0, y: 0.000012699999956566899, z: -0.01 },
         }}
@@ -890,7 +918,7 @@ export default function BoosterPackDrv8305() {
         obstructsWithinBounds={false}
         pinLabels={DRV8305_PINS}
         cadModel={{
-          objUrl: drv8305ObjPath,
+          ...CAD_MODELS.driver,
           pcbRotationOffset: 0,
           modelOriginPosition: { x: 0, y: 0, z: -0.6 },
         }}
@@ -1355,7 +1383,7 @@ export default function BoosterPackDrv8305() {
         schPinArrangement={{ rightSide: ["PVDD", "GND"] }}
         pcbPinLabels={{ pin1: "PVDD", pin2: "GND" }}
         cadModel={{
-          objUrl: terminal2ObjPath,
+          ...CAD_MODELS.terminal2,
           pcbRotationOffset: 0,
           modelOriginPosition: {
             x: -2.5399878999999967,
@@ -1382,7 +1410,7 @@ export default function BoosterPackDrv8305() {
         schPinArrangement={{ leftSide: ["MOT_A", "MOT_B", "MOT_C"] }}
         pcbPinLabels={{ pin1: "MOT_A", pin2: "MOT_B", pin3: "MOT_C" }}
         cadModel={{
-          objUrl: terminal3ObjPath,
+          ...CAD_MODELS.terminal3,
           pcbRotationOffset: 0,
           modelOriginPosition: {
             x: 0.000013299999995108891,
@@ -1754,7 +1782,7 @@ export default function BoosterPackDrv8305() {
           pin6: "SW",
         }}
         cadModel={{
-          objUrl: lmr16006ObjPath,
+          ...CAD_MODELS.buckRegulator,
           pcbRotationOffset: 180,
           modelOriginPosition: {
             x: 0.000025399999913133797,
@@ -1835,7 +1863,7 @@ export default function BoosterPackDrv8305() {
         supplierPartNumbers={{ jlcpcb: ["C467156"] }}
         footprint={<Inductor8040Footprint />}
         cadModel={{
-          objUrl: inductorObjPath,
+          ...CAD_MODELS.inductor,
           pcbRotationOffset: 0,
           modelOriginPosition: { x: 0, y: 0.00004999999999988347, z: 0 },
         }}
@@ -1928,7 +1956,7 @@ export default function BoosterPackDrv8305() {
         layer="bottom"
         pinLabels={HEADER_PINS}
         cadModel={{
-          objUrl: headerObjPath,
+          ...CAD_MODELS.header,
           pcbRotationOffset: 90,
           modelOriginPosition: {
             x: 0.0004862999999293294,
@@ -1983,7 +2011,7 @@ export default function BoosterPackDrv8305() {
         layer="bottom"
         pinLabels={HEADER_PINS}
         cadModel={{
-          objUrl: headerObjPath,
+          ...CAD_MODELS.header,
           pcbRotationOffset: 90,
           modelOriginPosition: {
             x: 0.0004862999999293294,
