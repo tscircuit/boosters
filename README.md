@@ -16,6 +16,7 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 | [BOOSTXL-AUDIO audio BoosterPack](./boostxl-audio/) | 14-bit DAC/PWM audio, headset detection and routing, electret microphone preamplifier, speaker amplifier, and LaunchPad XL headers |
 | [BOOSTXL-ADS7841-Q1 data-acquisition BoosterPack](./boostxl-ads7841-q1/) | Four-channel ADS7841-Q1 conversion, precision input buffers and reference, SPI level translation, board-ID EEPROM, and LaunchPad XL headers |
 | [BOOSTXL-ADS1119 data-acquisition BoosterPack](./boostxl-ads1119/) | 16-bit delta-sigma conversion, protected analog inputs, generated 5 V supply, board EEPROM, and LaunchPad XL headers |
+| [TIDA-00647 ADS1220 RTD BoosterPack](./tida-00647/) | 24-bit delta-sigma RTD acquisition, two-, three-, and four-wire sensor connections, precision reference network, SPI interface, and LaunchPad headers |
 | [BOOSTXL-ULN2003 dual stepper-motor BoosterPack](./boostxl-uln2003/) | ULN2003/ULN2803 motor outputs, serial and parallel control, mode switches, protection, LEDs, and LaunchPad XL headers |
 
 Each BoosterPack lives in its own top-level directory with its circuit entrypoint, TypeScript component imports, and board-specific documentation. Shared deployment and TypeScript configuration remain at the repository root.
