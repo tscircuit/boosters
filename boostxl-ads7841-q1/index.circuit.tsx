@@ -4,7 +4,6 @@ import { A_5001 } from "./imports/A_5001"
 import { BR24G32FVT_3GE2 } from "./imports/BR24G32FVT_3GE2"
 import { OPA2320AQDGKRQ1 } from "./imports/OPA2320AQDGKRQ1"
 import { PEC02SAAN } from "./imports/PEC02SAAN"
-import { PEC03SAAN } from "./imports/PEC03SAAN"
 import { PZ254V_12_4P } from "./imports/PZ254V_12_4P"
 import { PZ254V_12_6P } from "./imports/PZ254V_12_6P"
 import { REF5045AQDRQ1 } from "./imports/REF5045AQDRQ1"
@@ -252,8 +251,22 @@ export default function Circuit() {
         <capacitor name="C25" capacitance="10uF" footprint="0805" manufacturerPartNumber="C2012X5R1E106K125AB" supplierPartNumbers={{ jlcpcb: ["C15850"] }} schX={-6.0} schY={-6.8} pcbX={9.5} pcbY={-16.5} connections={{ pin1: N.VDD, pin2: N.GND }} />
         <capacitor name="C26" capacitance="1uF" footprint="0603" manufacturerPartNumber="C1608X5R1H105K080AB" supplierPartNumbers={{ jlcpcb: ["C2858495"] }} schX={3.0} schY={-7.8} pcbX={3.5} pcbY={-4.4} connections={{ pin1: N.VREF45_RAW, pin2: N.GND }} />
         <capacitor name="C27" capacitance="1uF" footprint="0603" manufacturerPartNumber="C1608X5R1H105K080AB" supplierPartNumbers={{ jlcpcb: ["C2858495"] }} schX={5.3} schY={-7.8} pcbX={8.8} pcbY={-13.9} pcbRotation={90} connections={{ pin1: N.VREF45_RAW, pin2: N.GND }} />
-        <resistor name="R31" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EA" supplierPartNumbers={{ jlcpcb: ["C844915"] }} schX={4.0} schY={-5.4} pcbX={8.0} pcbY={-4.2} connections={{ pin1: N.VREF45_RAW, pin2: N.VREF45_FILTERED }} />
-        <PEC03SAAN name="J13" schX={8.5} schY={-6.0} pcbX={7.6} pcbY={-1.8} connections={{ pin1: N.VDD, pin2: N.VREF, pin3: N.VREF45_RAW }} />
+        <resistor name="R31" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EA" supplierPartNumbers={{ jlcpcb: ["C844915"] }} schX={4.0} schY={-5.4} pcbX={8.0} pcbY={-4.4} connections={{ pin1: N.VREF45_RAW, pin2: N.VREF45_FILTERED }} />
+        <pinheader
+          name="J13"
+          pinCount={3}
+          pitch="2.54mm"
+          gender="unpopulated"
+          manufacturerPartNumber="PEC03SAAN"
+          supplierPartNumbers={{ jlcpcb: ["C5708637"] }}
+          footprint="pinrow3"
+          schX={8.5}
+          schY={-6.0}
+          pcbX={7.6}
+          pcbY={-1.8}
+          pcbRotation={180}
+          connections={{ pin1: N.VDD, pin2: N.VREF, pin3: N.VREF45_RAW }}
+        />
         <capacitor name="C30" capacitance="10uF" footprint="1206" manufacturerPartNumber="TAJA106M010RNJ" supplierPartNumbers={{ jlcpcb: ["C129240"] }} schX={6.5} schY={-5.4} pcbX={11.5} pcbY={-6.7} pcbRotation={90} connections={{ pin1: N.VREF45_FILTERED, pin2: N.GND }} />
         <PZ254V_12_4P name="J15" schX={8.0} schY={-1.5} schWidth="3.8mm" schHeight="3.5mm" pcbX={0} pcbY={-17.1} connections={{ pin1: N.AIN3, pin2: N.DIVIDER, pin3: N.GND, pin4: N.DIVIDER_BOTTOM }} />
         <resistor name="R35" resistance="68.1kohm" footprint="0402" manufacturerPartNumber="CRCW040268K1FKED" supplierPartNumbers={{ jlcpcb: ["C25819"] }} schX={8.0} schY={2.0} pcbX={4.2} pcbY={-17.2} pcbRotation={90} connections={{ pin1: N.VDD, pin2: N.DIVIDER }} />
