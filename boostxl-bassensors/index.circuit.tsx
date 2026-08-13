@@ -336,7 +336,7 @@ export default function Circuit() {
           schPinArrangement={{ leftSide: [1, 2, 3, 4, 5], bottomSide: [6, 7] }}
           pcbX={10.0}
           pcbY={-15.0}
-          pcbRotation={180}
+          pcbRotation={0}
           noConnect={["pin6", "pin7"]}
           connections={{
             pin1: "net.J5_TMP_POWER",
@@ -377,7 +377,7 @@ export default function Circuit() {
           schPinArrangement={{ leftSide: [1, 2, 3, 4, 5], bottomSide: [6, 7] }}
           pcbX={32.1}
           pcbY={-15.0}
-          pcbRotation={180}
+          pcbRotation={0}
           noConnect={["pin6", "pin7"]}
           connections={{
             pin1: N.TMP_MODULE_ALERT,
