@@ -28,6 +28,8 @@
     "boostxl-tlv8544pir/**/*.tsx",
     "boostxl-tmp107/**/*.ts",
     "boostxl-tmp107/**/*.tsx",
+    "boostxl-bassensors/**/*.ts",
+    "boostxl-bassensors/**/*.tsx",
     "boostxl-audio/**/*.ts",
     "boostxl-audio/**/*.tsx",
     "boostxl-ads7841-q1/**/*.ts",

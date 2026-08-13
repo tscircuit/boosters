@@ -12,6 +12,7 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 | [BOOSTXL-TLV8544PIR motion detector BoosterPack](./boostxl-tlv8544pir/) | Ultra-low-power PIR motion detector, quad nanopower amplifier signal chain, current monitoring, LEDs, and LaunchPad XL headers |
 | [BOOSTXL-DRV8305EVM motor-drive BoosterPack](./boostxl-drv8305evm/) | Four-layer, six-MOSFET three-phase bridge with DRV8305 gate driver, current and voltage sensing, 3.3 V buck supply, and LaunchPad XL headers |
 | [BOOSTXL-TMP107 temperature-sensor BoosterPack](./boostxl-tmp107/) | TMP107 daisy-chain temperature sensing, selectable UART transmit path, LaunchPad headers, and two breakaway sensor nodes |
+| [BOOSTXL-BASSENSORS building-automation sensor BoosterPack](./boostxl-bassensors/) | TMP116 temperature, HDC2010 humidity, OPT3001 ambient-light, and DRV5055 Hall-effect sensing with a breakaway sensor coupon and LaunchPad XL headers |
 | [BOOSTXL-CC2650MA wireless BoosterPack](./boostxl-cc2650ma/) | CC2650MODA Bluetooth Low Energy module, LaunchPad headers, JTAG, removable current-measurement link, status LEDs, and optional external flash |
 | [BOOSTXL-AUDIO audio BoosterPack](./boostxl-audio/) | 14-bit DAC/PWM audio, headset detection and routing, electret microphone preamplifier, speaker amplifier, and LaunchPad XL headers |
 | [BOOSTXL-ADS7841-Q1 data-acquisition BoosterPack](./boostxl-ads7841-q1/) | Four-channel ADS7841-Q1 conversion, precision input buffers and reference, SPI level translation, board-ID EEPROM, and LaunchPad XL headers |
