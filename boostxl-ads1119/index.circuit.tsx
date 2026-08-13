@@ -737,6 +737,7 @@ export default function Circuit() {
           footprint="1210"
           pcbX={0.0}
           pcbY={11.2}
+          pcbRotation={90}
           connections={{ pin1: N.VBOOST, pin2: N.GND }}
         />
         <TPS71750DSER
@@ -904,7 +905,7 @@ export default function Circuit() {
           schY={-7.0}
           schWidth="1.8mm"
           schHeight="1.4mm"
-          pcbX={18.0}
+          pcbX={17.0}
           pcbY={2.3}
           connections={{ pin1: N.WP, pin2: N.GND }}
         />
