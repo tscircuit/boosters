@@ -668,12 +668,10 @@ export default function Circuit() {
       <hole name="H4" diameter="3.2mm" pcbX={20.32} pcbY={-15.24} />
 
       {/* TI's TMP116 coupon is separated from the main PCB by routed perforation slots. */}
-      <cutout name="BREAK_SLOT_1" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={14.9} />
-      <cutout name="BREAK_SLOT_2" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={9.0} />
-      <cutout name="BREAK_SLOT_3" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={3.1} />
-      <cutout name="BREAK_SLOT_4" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={-2.8} />
-      <cutout name="BREAK_SLOT_5" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={-8.7} />
-      <cutout name="BREAK_SLOT_6" shape="rect" width="4.2mm" height="0.75mm" pcbX={22.02} pcbY={-14.6} />
+      <cutout name="BREAK_SLOT_2" shape="rect" width="0.75mm" height="4.2mm" pcbX={22.02} pcbY={9.0} />
+      <cutout name="BREAK_SLOT_3" shape="rect" width="0.75mm" height="4.2mm" pcbX={22.02} pcbY={3.1} />
+      <cutout name="BREAK_SLOT_4" shape="rect" width="0.75mm" height="4.2mm" pcbX={22.02} pcbY={-2.8} />
+      <cutout name="BREAK_SLOT_5" shape="rect" width="0.75mm" height="4.2mm" pcbX={22.02} pcbY={-8.7} />
 
       <copperpour
         name="GND_BOTTOM"
