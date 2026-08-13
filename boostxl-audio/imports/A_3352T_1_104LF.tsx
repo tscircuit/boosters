@@ -82,7 +82,7 @@ export const A_3352T_1_104LF = (props: ImportedThumbwheelProps) => (
 		}
 		cadModel={{
 			stepUrl: BOURNS_3352T_STEP_URL,
-			rotationOffset: { x: -90, y: 0, z: 0 },
+			rotationOffset: { x: -90, y: 180, z: 0 },
 			positionOffset: { x: 0, y: 2.6, z: 0 },
 		}}
 		{...props}
