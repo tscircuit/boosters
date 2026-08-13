@@ -30,6 +30,8 @@
     "boostxl-tmp107/**/*.tsx",
     "boostxl-audio/**/*.ts",
     "boostxl-audio/**/*.tsx",
+    "boostxl-ads7841-q1/**/*.ts",
+    "boostxl-ads7841-q1/**/*.tsx",
     "boostxl-uln2003/**/*.ts",
     "boostxl-uln2003/**/*.tsx"
   ],
