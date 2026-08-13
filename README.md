@@ -14,6 +14,7 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 | [BOOSTXL-TMP107 temperature-sensor BoosterPack](./boostxl-tmp107/) | TMP107 daisy-chain temperature sensing, selectable UART transmit path, LaunchPad headers, and two breakaway sensor nodes |
 | [BOOSTXL-CC2650MA wireless BoosterPack](./boostxl-cc2650ma/) | CC2650MODA Bluetooth Low Energy module, LaunchPad headers, JTAG, removable current-measurement link, status LEDs, and optional external flash |
 | [BOOSTXL-AUDIO audio BoosterPack](./boostxl-audio/) | 14-bit DAC/PWM audio, headset detection and routing, electret microphone preamplifier, speaker amplifier, and LaunchPad XL headers |
+| [BOOSTXL-ADS7841-Q1 data-acquisition BoosterPack](./boostxl-ads7841-q1/) | Four-channel ADS7841-Q1 conversion, precision input buffers and reference, SPI level translation, board-ID EEPROM, and LaunchPad XL headers |
 | [BOOSTXL-ADS1119 data-acquisition BoosterPack](./boostxl-ads1119/) | 16-bit delta-sigma conversion, protected analog inputs, generated 5 V supply, board EEPROM, and LaunchPad XL headers |
 | [BOOSTXL-ULN2003 dual stepper-motor BoosterPack](./boostxl-uln2003/) | ULN2003/ULN2803 motor outputs, serial and parallel control, mode switches, protection, LEDs, and LaunchPad XL headers |
 
