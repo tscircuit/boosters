@@ -22,7 +22,7 @@ export const capacitor0805CadModel: CadModelProp = {
 export const sot23CadModel: CadModelProp = {
   objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C82460.obj?uuid=d777607a152f4f3aac9bb0d0c14ed6fd",
   stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C82460.step?uuid=d777607a152f4f3aac9bb0d0c14ed6fd",
-  pcbRotationOffset: 180,
+  pcbRotationOffset: 0,
   modelOriginPosition: { x: 0.0000127, y: -0.0000127, z: 0.050795 },
 }
 
