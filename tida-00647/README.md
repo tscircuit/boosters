@@ -11,7 +11,7 @@ A two-layer tscircuit implementation of Texas Instruments' TIDA-00647 reference 
 - Precision 4.22 kOhm and 3.24 kOhm reference network
 - Differential input filtering and Schottky protection for the analog inputs
 - 3.3 V operation with SPI clock, MOSI, MISO, chip-select, and data-ready connections
-- Two physical 2x10 BoosterPack sockets matching TI's combined 40-pin `J1` footprint
+- Two physical 2x10 BoosterPack connectors matching TI's combined 40-pin `J1` footprint, with male pins above the PCB and female socket housings below it
 
 The board requires a compatible LaunchPad or another SPI controller. It is an acquisition front end, not a standalone temperature display or controller.
 

@@ -61,7 +61,7 @@ export const SSQ_110_03_G_D = (props: ConnectorProps) => {
       cadModel={{
         objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C3323139.obj?uuid=b43d0c057b6b4175ab19ee916be5b1eb",
         stepUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C3323139.step?uuid=b43d0c057b6b4175ab19ee916be5b1eb",
-        pcbRotationOffset: 0,
+        rotationOffset: { x: 180, y: 0, z: 0 },
         modelOriginPosition: { x: 0.0004862999999293294, y: 0, z: -4.2500064 },
       }}
       {...props}
