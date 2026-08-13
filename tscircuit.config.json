@@ -2,6 +2,6 @@
   "$schema": "https://cdn.jsdelivr.net/npm/@tscircuit/cli/types/tscircuit.config.schema.json",
   "mainEntrypoint": "boostxl-edumkii/index.circuit.tsx",
   "build": {
-    "workerTimeoutMs": 900000
+    "workerTimeoutMs": 1200000
   }
 }
