@@ -2,6 +2,12 @@
 
 Native tscircuit reconstruction of Texas Instruments' BOOSTXL-RS232 dual-channel RS-232 BoosterPack. The design follows TI user guide SLLU250 and its schematic, with a TRS3122E transceiver, DB9 connector, signal-status LEDs, selectable 1.8 V or 3.3 V logic supply, and configurable LaunchPad GPIO routing.
 
+The schematic is divided into three functional sheets:
+
+- **RS-232 Transceiver and Power** — DB9 interface, TRS3122E, charge pump, logic-voltage regulator, supply selection, and support components.
+- **Status LEDs and Test Header** — power indicator, RX/TX/RTS/CTS activity indicators, and the accessible RS-232 signal header.
+- **Interface and Signal Routing** — BoosterPack headers, GPIO-selection banks, and FORCEON/FORCEOFF/INVALID assignment header.
+
 The PCB preserves the BoosterPack outline, mounting holes, component placement, LaunchPad headers, test and configuration headers, and two-layer construction. RX, TX, RTS, and CTS can be routed through the on-board selection headers, while FORCEON, FORCEOFF, and INVALID remain accessible for transceiver control and monitoring.
 
 This directory follows the source-only layout used by the other boards in this repository: the circuit entrypoint, flat TypeScript component imports, documentation, and canonical snapshots are tracked. Generated manufacturing files, reference archives, caches, dependencies, and downloaded CAD models are not stored here.

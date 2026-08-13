@@ -3,6 +3,12 @@ import { HTSW_103_07_T_S } from "./imports/HTSW_103_07_T_S";
 import { LP2985_18DBVR } from "./imports/LP2985_18DBVR";
 import { TRS3122ERGER } from "./imports/TRS3122ERGER";
 
+const SCHEMATIC_SHEETS = {
+  core: "rs232-core-power",
+  status: "status-test",
+  interface: "interface-routing",
+} as const;
+
 /**
  * Placement-faithful BOOSTXL-RS232 Rev 1.0 reconstruction.
  * Connectivity and designators follow TI SLLU250 Figure 12; component placement
@@ -26,8 +32,24 @@ export const BOOSTXL_RS232 = () => (
     autorouterEffortLevel="5x"
     placementDrcChecksDisabled
     schTraceAutoLabelEnabled
-    schMaxTraceDistance="2mm"
+    schMaxTraceDistance="1.2mm"
   >
+    <schematicsheet
+      name={SCHEMATIC_SHEETS.core}
+      displayName="RS-232 Transceiver and Power"
+      sheetIndex={1}
+    />
+    <schematicsheet
+      name={SCHEMATIC_SHEETS.status}
+      displayName="Status LEDs and Test Header"
+      sheetIndex={2}
+    />
+    <schematicsheet
+      name={SCHEMATIC_SHEETS.interface}
+      displayName="Interface and Signal Routing"
+      sheetIndex={3}
+    />
+
     <hole name="H1" diameter="3.2mm" pcbX={-28.45} pcbY={24.4} />
     <hole name="H2" diameter="3.2mm" pcbX={28.45} pcbY={24.4} />
     <hole name="H3" diameter="3.2mm" pcbX={-28.45} pcbY={-26.4} />
@@ -42,14 +64,24 @@ export const BOOSTXL_RS232 = () => (
       boardEdgeMargin="0.3mm"
     />
 
+    <group
+      name="RS232_CORE_POWER"
+      schSheetName={SCHEMATIC_SHEETS.core}
+      schX={0}
+      schY={0}
+      pcbX={0}
+      pcbY={0}
+      schMaxTraceDistance="1.2mm"
+      schTraceAutoLabelEnabled
+    >
     {/* Imported directly from the live JLCPCB catalog, with exact CAD. */}
     <D_DMR009PF_D002
       name="J10"
       pcbX={0}
       pcbY={22.1}
       pcbRotation={90}
-      schX={12.5}
-      schY={5.5}
+      schX={12}
+      schY={2.5}
       schWidth="4mm"
       schHeight="5mm"
       connections={{
@@ -68,8 +100,8 @@ export const BOOSTXL_RS232 = () => (
       name="U1"
       pcbX={0}
       pcbY={10.2}
-      schX={-1}
-      schY={5}
+      schX={1}
+      schY={2}
 
       connections={{
         C3_POS: "net.C3_POS",
@@ -104,8 +136,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-19.2}
       pcbY={8.9}
       pcbRotation={90}
-      schX={-22}
-      schY={5}
+      schX={-8}
+      schY={2}
       schWidth="3mm"
       schHeight="2mm"
       
@@ -132,8 +164,8 @@ export const BOOSTXL_RS232 = () => (
       pcbY={5.9}
       pcbRotation={90}
       manufacturerPartNumber="TSW-103-07-G-S"
-      schX={-13}
-      schY={16}
+      schX={-8}
+      schY={5}
  
       schPinArrangement={{
         leftSide: {
@@ -160,8 +192,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C14663"] }}
       pcbX={0}
       pcbY={6.4}
-      schX={-6.2}
-      schY={3.5}
+      schX={-4.2}
+      schY={0.5}
       schRotation={90}
       connections={{ pin2: "net.C1_POS", pin1: "net.C1_NEG" }}
     />
@@ -173,8 +205,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={3.5}
       pcbY={12.0}
       pcbRotation={90}
-      schX={-6.2}
-      schY={1}
+      schX={-4.2}
+      schY={-2}
       schRotation={90}
       connections={{ pin2: "net.C2_POS", pin1: "net.C2_NEG" }}
     />
@@ -185,8 +217,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C14663"] }}
       pcbX={0}
       pcbY={13.8}
-      schX={5}
-      schY={8.8}
+      schX={7}
+      schY={5.8}
       schRotation={90}
       connections={{ pin2: "net.C3_POS", pin1: "net.C3_NEG" }}
     />
@@ -198,8 +230,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={4.6}
       pcbY={8.8}
       pcbRotation={90}
-      schX={-6.2}
-      schY={7.7}
+      schX={-4.2}
+      schY={4.7}
       connections={{ pin1: "net.V_POS", pin2: "net.GND" }}
     />
     <capacitor
@@ -210,8 +242,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={5.5}
       pcbY={13.5}
       pcbRotation={90}
-      schX={5.4}
-      schY={-0.4}
+      schX={7.4}
+      schY={-3.4}
       schRotation={270}
       connections={{ pin1: "net.V_NEG", pin2: "net.GND" }}
     />
@@ -223,8 +255,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={4.6}
       pcbY={5.8}
       pcbRotation={90}
-      schX={-5.2}
-      schY={9}
+      schX={-3.2}
+      schY={6}
       connections={{ pin1: "net.VCC", pin2: "net.GND" }}
     />
 
@@ -236,8 +268,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C111590"] }}
       pcbX={-22.5}
       pcbY={6.8}
-      schX={-27}
-      schY={5}
+      schX={-11.5}
+      schY={2}
       schRotation={90}
       connections={{ pin2: "net.V3V3", pin1: "net.GND" }}
     />
@@ -248,8 +280,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C23630"] }}
       pcbX={-21.9}
       pcbY={12.1}
-      schX={-18}
-      schY={4}
+      schX={-5}
+      schY={1}
       schRotation={270}
       connections={{ pin1: "net.V1V8", pin2: "net.GND" }}
     />
@@ -260,8 +292,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C57112"] }}
       pcbX={-18}
       pcbY={5.8}
-      schX={-26}
-      schY={3.5}
+      schX={-10.5}
+      schY={0.5}
       schRotation={270}
       connections={{ pin1: "net.LDO_BYPASS", pin2: "net.GND" }}
     />
@@ -274,8 +306,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C25804"] }}
       pcbX={-4}
       pcbY={5.1}
-      schX={-12}
-      schY={10.5}
+      schX={-5.5}
+      schY={-5.5}
             schRotation={270}
 
       connections={{ pin1: "net.VCC", pin2: "net.RX2" }}
@@ -288,8 +320,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-1.4}
       pcbY={3.7}
       pcbRotation={90}
-      schX={-10.8}
-      schY={10.5}
+      schX={-4.3}
+      schY={-5.5}
             schRotation={270}
 
       connections={{ pin1: "net.VCC", pin2: "net.CTS2" }}
@@ -302,8 +334,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={8}
       pcbY={7.5}
       pcbRotation={90}
-      schX={-9.6}
-      schY={10.5}
+      schX={-3.1}
+      schY={-5.5}
             schRotation={270}
 
       connections={{ pin1: "net.VCC", pin2: "net.FORCEON" }}
@@ -316,8 +348,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={6.2}
       pcbY={5.8}
       pcbRotation={90}
-      schX={-8.4}
-      schY={10.5}
+      schX={-1.9}
+      schY={-5.5}
             schRotation={270}
 
       connections={{ pin1: "net.VCC", pin2: "net.FORCEOFF" }}
@@ -330,11 +362,22 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-7.2}
       pcbY={17.8}
       schX={10.5}
-      schY={4.9}
+      schY={1.9}
       connections={{ pin1: "net.DTR1", pin2: "net.DSR1" }}
     />
+    </group>
 
     {/* Power LED and four antiparallel RS-232 status pairs. */}
+    <group
+      name="STATUS_AND_TEST"
+      schSheetName={SCHEMATIC_SHEETS.status}
+      schX={0}
+      schY={0}
+      pcbX={0}
+      pcbY={0}
+      schMaxTraceDistance="1.2mm"
+      schTraceAutoLabelEnabled
+    >
     <resistor
       name="R6"
       resistance="1.96k"
@@ -343,8 +386,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-25}
       pcbY={7}
       pcbRotation={90}
-      schX={17}
-      schY={13.5}
+      schX={-1}
+      schY={5}
       schRotation={270}
       connections={{ pin1: "net.V3V3", pin2: "net.PWR_LED" }}
     />
@@ -356,8 +399,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-26}
       pcbY={10}
       pcbRotation={90}
-      schX={17}
-      schY={10}
+      schX={-1}
+      schY={1}
       schRotation={270}
       connections={{ pin1: "net.PWR_LED", pin2: "net.GND" }}
     />
@@ -368,8 +411,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C23068"] }}
       pcbX={-7.8}
       pcbY={10.5}
-      schX={21}
-      schY={13.5}
+      schX={3}
+      schY={5}
       schRotation={270}
       connections={{ pin1: "net.RX1", pin2: "net.RX1_LED" }}
     />
@@ -380,8 +423,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C125094"] }}
       pcbX={-10.8}
       pcbY={11.6}
-      schX={20.3}
-      schY={10}
+      schX={2}
+      schY={1}
       schRotation={270}
       connections={{ pin1: "net.RX1_LED", pin2: "net.GND" }}
     />
@@ -392,8 +435,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2286"] }}
       pcbX={-10.8}
       pcbY={9.4}
-      schX={21.7}
-      schY={10}
+      schX={4}
+      schY={1}
       schRotation={90}
       connections={{ pin1: "net.GND", pin2: "net.RX1_LED" }}
     />
@@ -404,8 +447,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C23068"] }}
       pcbX={7.8}
       pcbY={10.5}
-      schX={26}
-      schY={13.5}
+      schX={8}
+      schY={5}
       schRotation={90}
       connections={{ pin1: "net.TX1", pin2: "net.TX1_LED" }}
     />
@@ -416,8 +459,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C125094"] }}
       pcbX={10.8}
       pcbY={11.6}
-      schX={25.3}
-      schY={10}
+      schX={7}
+      schY={1}
       schRotation={270}
       connections={{ pin1: "net.TX1_LED", pin2: "net.GND" }}
     />
@@ -428,8 +471,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2286"] }}
       pcbX={10.8}
       pcbY={9.4}
-      schX={26.7}
-      schY={10}
+      schX={9}
+      schY={1}
       schRotation={90}
       connections={{ pin1: "net.GND", pin2: "net.TX1_LED" }}
     />
@@ -440,8 +483,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C23068"] }}
       pcbX={7.8}
       pcbY={15.5}
-      schX={21}
-      schY={4.5}
+      schX={3}
+      schY={-2}
       schRotation={270}
       connections={{ pin1: "net.CTS1", pin2: "net.CTS1_LED" }}
     />
@@ -452,8 +495,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C125094"] }}
       pcbX={10.8}
       pcbY={16.6}
-      schX={20.3}
-      schY={1}
+      schX={2}
+      schY={-6}
       schRotation={270}
       connections={{ pin1: "net.CTS1_LED", pin2: "net.GND" }}
     />
@@ -464,8 +507,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2286"] }}
       pcbX={10.8}
       pcbY={14.4}
-      schX={21.7}
-      schY={1}
+      schX={4}
+      schY={-6}
       schRotation={90}
       connections={{ pin1: "net.GND", pin2: "net.CTS1_LED" }}
     />
@@ -476,8 +519,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C23068"] }}
       pcbX={-7.8}
       pcbY={15.5}
-      schX={26}
-      schY={4.5}
+      schX={8}
+      schY={-2}
       schRotation={270}
       connections={{ pin1: "net.RTS1", pin2: "net.RTS1_LED" }}
     />
@@ -488,8 +531,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C125094"] }}
       pcbX={-10.8}
       pcbY={16.6}
-      schX={25.3}
-      schY={1}
+      schX={7}
+      schY={-6}
       schRotation={270}
       connections={{ pin1: "net.RTS1_LED", pin2: "net.GND" }}
     />
@@ -500,8 +543,8 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2286"] }}
       pcbX={-10.8}
       pcbY={14.4}
-      schX={26.7}
-      schY={1}
+      schX={9}
+      schY={-6}
       schRotation={90}
       connections={{ pin1: "net.GND", pin2: "net.RTS1_LED" }}
     />
@@ -522,8 +565,8 @@ export const BOOSTXL_RS232 = () => (
           <silkscreenrect width="10mm" height="2.5mm" />
         </footprint>
       }
-      schX={9}
-      schY={8.5}
+      schX={-9}
+      schY={3.5}
       schWidth="1.6mm"
       schHeight="0.6mm"
       schPinArrangement={{
@@ -544,8 +587,19 @@ export const BOOSTXL_RS232 = () => (
       }}
       connections={{ pin1: "net.RX1", pin2: "net.RTS1", pin3: "net.TX1", pin4: "net.CTS1" }}
     />
+    </group>
 
     {/* FORCEON/FORCEOFF/INVALID assignment header. */}
+    <group
+      name="INTERFACE_ROUTING"
+      schSheetName={SCHEMATIC_SHEETS.interface}
+      schX={0}
+      schY={0}
+      pcbX={0}
+      pcbY={0}
+      schMaxTraceDistance="1.2mm"
+      schTraceAutoLabelEnabled
+    >
     <chip
       name="J9"
       supplierPartNumbers={{ jlcpcb: ["C2337"] }}
@@ -563,8 +617,8 @@ export const BOOSTXL_RS232 = () => (
           <silkscreenrect width="5mm" height="7mm" />
         </footprint>
       }
-      schX={11.5}
-      schY={-2}
+      schX={0}
+      schY={9}
       schWidth="2mm"
       schHeight="1.5mm"
       schPinArrangement={{
@@ -612,8 +666,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-23.77}
       pcbY={-12.5}
       pcbRotation={270}
-      schX={-15.5}
-      schY={-7.5}
+      schX={-4}
+      schY={4}
       schWidth="2mm"
                 schHeight="2.5mm"
 
@@ -655,8 +709,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-21.23}
       pcbY={-12.5}
       pcbRotation={270}
-      schX={-10}
-      schY={-7.5}
+      schX={4}
+      schY={4}
       schWidth="3mm"
       schHeight="2.5mm"
       schPinArrangement={{
@@ -694,8 +748,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={21.23}
       pcbY={-12.5}
       pcbRotation={ 270}
-      schX={13}
-      schY={-7.5}
+      schX={-4}
+      schY={-1}
       schWidth="3mm"
                   schHeight="2.5mm"
 
@@ -730,8 +784,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={23.77}
       pcbY={-12.5}
       pcbRotation={270}
-      schX={17.5}
-      schY={-7.5}
+      schX={4}
+      schY={-1}
       schWidth="2mm"
             schHeight="2.5mm"
 
@@ -776,8 +830,8 @@ export const BOOSTXL_RS232 = () => (
       manufacturerPartNumber="2.54-1x40P-BREAKAWAY"
       pcbX={-10.8}
       pcbY={-12.5}
-      schX={-5}
-      schY={-7.5}
+      schX={-7}
+      schY={-7}
       schPinArrangement={{
         leftSide: {
           direction: "top-to-bottom",
@@ -820,8 +874,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={-7.0}
       pcbY={-12.5}
       pcbRotation={270}
-      schX={0}
-      schY={-7.5}
+      schX={-2}
+      schY={-7}
       schPinArrangement={{
         rightSide: {
           direction: "top-to-bottom",
@@ -849,8 +903,8 @@ export const BOOSTXL_RS232 = () => (
       manufacturerPartNumber="2.54-1x40P-BREAKAWAY"
       pcbX={7.0}
       pcbY={-12.5}
-      schX={4}
-      schY={-7.5}
+      schX={3}
+      schY={-7}
 
       schPinArrangement={{
         leftSide: {
@@ -894,8 +948,8 @@ export const BOOSTXL_RS232 = () => (
       pcbX={10.8}
       pcbY={-12.5}
       pcbRotation={270}
-      schX={8.5}
-      schY={-7.5}
+      schX={8}
+      schY={-7}
 
       schPinArrangement={{
         rightSide: {
@@ -917,6 +971,7 @@ export const BOOSTXL_RS232 = () => (
         pin10: "net.TX2",
       }}
     />
+    </group>
   </board>
 );
 
