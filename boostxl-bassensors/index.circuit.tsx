@@ -662,9 +662,9 @@ export default function Circuit() {
         connections={{ pin1: N.GND }}
       />
 
-      <hole name="H1" diameter="3.2mm" pcbX={-30.48} pcbY={15.24} />
+      <hole name="H1" diameter="3.2mm" pcbX={-29.21} pcbY={15.24} />
       <hole name="H2" diameter="3.2mm" pcbX={20.32} pcbY={15.24} />
-      <hole name="H3" diameter="3.2mm" pcbX={-30.48} pcbY={-15.24} />
+      <hole name="H3" diameter="3.2mm" pcbX={-29.21} pcbY={-15.24} />
       <hole name="H4" diameter="3.2mm" pcbX={20.32} pcbY={-15.24} />
 
       {/* TI's TMP116 coupon is separated from the main PCB by routed perforation slots. */}
