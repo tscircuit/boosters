@@ -1,7 +1,6 @@
 import { ADS1119IPWR } from "./imports/ADS1119IPWR"
 import { CAT24C32YI_GT3 } from "./imports/CAT24C32YI_GT3"
 import { GPFA104_0302A003R1BA } from "./imports/GPFA104_0302A003R1BA"
-import { GPFA104_0202A003R1BA } from "./imports/GPFA104_0202A003R1BA"
 import { KF2EDGR_3_5_7P } from "./imports/KF2EDGR_3_5_7P"
 import { LQH32PN1R0NN0L } from "./imports/LQH32PN1R0NN0L"
 import { LTST_C171GKT } from "./imports/LTST_C171GKT"
@@ -660,14 +659,20 @@ export default function Circuit() {
           pcbY={12.5}
           connections={{ pin1: N.LP5, pin2: N.EN }}
         />
-        <GPFA104_0202A003R1BA
+        <pinheader
           name="JP1"
+          pinCount={2}
+          pitch="2.54mm"
+          gender="male"
+          manufacturerPartNumber="PEC02SAAN"
+          supplierPartNumbers={{ jlcpcb: ["C7261569"] }}
+          footprint="pinrow2"
           schX={-16.0}
           schY={-7.4}
           schWidth="2.0mm"
           schHeight="1.6mm"
           pcbX={-16.4}
-          pcbY={9.1}
+          pcbY={9.4}
           connections={{ pin1: N.EN, pin2: N.GND }}
         />
         <resistor
@@ -885,14 +890,20 @@ export default function Circuit() {
           pcbY={9.0}
           connections={{ pin1: N.LP33, pin2: N.GND }}
         />
-        <GPFA104_0202A003R1BA
+        <pinheader
           name="JP3"
+          pinCount={2}
+          pitch="2.54mm"
+          gender="male"
+          manufacturerPartNumber="PEC02SAAN"
+          supplierPartNumbers={{ jlcpcb: ["C7261569"] }}
+          footprint="pinrow2"
           schX={15.9}
           schY={-7.0}
           schWidth="1.8mm"
           schHeight="1.4mm"
           pcbX={18.0}
-          pcbY={2.0}
+          pcbY={2.3}
           connections={{ pin1: N.WP, pin2: N.GND }}
         />
       </group>
