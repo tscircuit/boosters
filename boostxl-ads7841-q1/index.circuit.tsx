@@ -254,6 +254,7 @@ export default function Circuit() {
         <resistor name="R31" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EA" supplierPartNumbers={{ jlcpcb: ["C844915"] }} schX={4.0} schY={-5.4} pcbX={8.0} pcbY={-4.4} connections={{ pin1: N.VREF45_RAW, pin2: N.VREF45_FILTERED }} />
         <pinheader
           name="J13"
+          layer="bottom"
           pinCount={3}
           pitch="2.54mm"
           gender="unpopulated"
