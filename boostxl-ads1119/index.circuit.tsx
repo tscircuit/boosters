@@ -661,6 +661,7 @@ export default function Circuit() {
         />
         <pinheader
           name="JP1"
+          layer="bottom"
           pinCount={2}
           pitch="2.54mm"
           gender="male"
@@ -892,6 +893,7 @@ export default function Circuit() {
         />
         <pinheader
           name="JP3"
+          layer="bottom"
           pinCount={2}
           pitch="2.54mm"
           gender="male"
