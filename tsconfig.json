@@ -37,7 +37,9 @@
     "boostxl-ads1119/**/*.ts",
     "boostxl-ads1119/**/*.tsx",
     "boostxl-uln2003/**/*.ts",
-    "boostxl-uln2003/**/*.tsx"
+    "boostxl-uln2003/**/*.tsx",
+    "boostxl-rs232/**/*.ts",
+    "boostxl-rs232/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

@@ -4,3 +4,5 @@ dist/
 .npmrc
 *.diff.png
 *.received.svg
+*.obj
+*.step
