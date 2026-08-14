@@ -664,7 +664,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2897373"] }}
       manufacturerPartNumber="PM254-1-10-Z-8.5"
       pcbX={-23.77}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={270}
       schX={-4}
       schY={4}
@@ -707,7 +707,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2897373"] }}
       manufacturerPartNumber="PM254-1-10-Z-8.5"
       pcbX={-21.23}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={270}
       schX={4}
       schY={4}
@@ -746,7 +746,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2897373"] }}
       manufacturerPartNumber="PM254-1-10-Z-8.5"
       pcbX={21.23}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={ 270}
       schX={-4}
       schY={-1}
@@ -782,7 +782,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2897373"] }}
       manufacturerPartNumber="PM254-1-10-Z-8.5"
       pcbX={23.77}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={270}
       schX={4}
       schY={-1}
@@ -829,7 +829,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2337"] }}
       manufacturerPartNumber="2.54-1x40P-BREAKAWAY"
       pcbX={-10.8}
-      pcbY={-12.5}
+      pcbY={-15}
       schX={-7}
       schY={-7}
       schPinArrangement={{
@@ -872,7 +872,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C492409"] }}
       manufacturerPartNumber="PZ254V-11-10P"
       pcbX={-7.0}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={270}
       schX={-2}
       schY={-7}
@@ -902,7 +902,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C2337"] }}
       manufacturerPartNumber="2.54-1x40P-BREAKAWAY"
       pcbX={7.0}
-      pcbY={-12.5}
+      pcbY={-15}
       schX={3}
       schY={-7}
 
@@ -946,7 +946,7 @@ export const BOOSTXL_RS232 = () => (
       supplierPartNumbers={{ jlcpcb: ["C492409"] }}
       manufacturerPartNumber="PZ254V-11-10P"
       pcbX={10.8}
-      pcbY={-12.5}
+      pcbY={-15}
       pcbRotation={270}
       schX={8}
       schY={-7}
