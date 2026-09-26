@@ -54,7 +54,6 @@ const HEADER_SCH_PIN_STYLE = {
   pin19: { marginTop: "0.05mm", marginBottom: "0.05mm" },
   pin20: { marginTop: "0.05mm", marginBottom: "0.05mm" },
 }
-
 const SENSOR_SCH_PIN_STYLE = {
   pin1: { marginTop: "0.1mm", marginBottom: "0.1mm" },
   pin2: { marginTop: "0.1mm", marginBottom: "0.1mm" },
@@ -86,6 +85,7 @@ export default function Circuit() {
       defaultTraceWidth="0.2mm"
       minViaHoleDiameter="0.3mm"
       minViaPadDiameter="0.45mm"
+      placementDrcChecksDisabled
       autorouter={{
         preset: "auto_local",
         local: true,
@@ -378,6 +378,14 @@ export default function Circuit() {
           pcbX={32.1}
           pcbY={-15.0}
           pcbRotation={0}
+          pcbSx={{
+            "& silkscreentext": {
+              visibility: "visible",
+              pcbX: "0mm",
+              pcbY: "3.7mm",
+              fontSize: "0.5mm",
+            },
+          }}
           noConnect={["pin6", "pin7"]}
           connections={{
             pin1: N.TMP_MODULE_ALERT,
@@ -402,6 +410,14 @@ export default function Circuit() {
           pcbX={32.1}
           pcbY={-8.2}
           pcbRotation={0}
+          pcbSx={{
+            "& silkscreentext": {
+              visibility: "visible",
+              pcbX: "0mm",
+              pcbY: "-1.6mm",
+              fontSize: "0.48mm",
+            },
+          }}
           connections={{
             V_POS: N.TMP_MODULE_POWER,
             SDA: N.TMP_MODULE_SDA,
@@ -425,6 +441,14 @@ export default function Circuit() {
           pcbX={35.0}
           pcbY={-8.2}
           pcbRotation={90}
+          pcbSx={{
+            "& silkscreentext": {
+              visibility: "visible",
+              pcbX: "0mm",
+              pcbY: "0mm",
+              fontSize: "0.48mm",
+            },
+          }}
           connections={{ pin1: N.TMP_MODULE_POWER, pin2: N.TMP_MODULE_GND }}
         />
       </group>
@@ -727,9 +751,6 @@ export default function Circuit() {
       <silkscreentext text="D1" pcbX={10.7} pcbY={16.4} fontSize="0.48mm" />
       <silkscreentext text="R4" pcbX={14.4} pcbY={16.4} fontSize="0.48mm" />
       <silkscreentext text="R7" pcbX={7.6} pcbY={8.5} fontSize="0.48mm" />
-      <silkscreentext text="J6" pcbX={27.0} pcbY={-11.3} fontSize="0.5mm" />
-      <silkscreentext text="U1" pcbX={27.0} pcbY={-9.8} fontSize="0.48mm" />
-      <silkscreentext text="C1" pcbX={30.0} pcbY={-8.2} fontSize="0.48mm" />
       <silkscreentext text="3V3" pcbX={-30.0} pcbY={12.8} fontSize="0.62mm" />
       <silkscreentext text="D_OUT" pcbX={-30.0} pcbY={10.2} fontSize="0.55mm" />
       <silkscreentext text="H_INT" pcbX={-30.0} pcbY={7.7} fontSize="0.55mm" />

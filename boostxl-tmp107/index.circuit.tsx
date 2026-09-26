@@ -41,7 +41,6 @@ const HEADER_SCH_PIN_STYLE = {
   pin19: { marginTop: "0.05mm", marginBottom: "0.05mm" },
   pin20: { marginTop: "0.05mm", marginBottom: "0.05mm" },
 }
-
 const TMP107_SCH_PIN_STYLE = {
   pin1: { marginTop: "0.075mm", marginBottom: "0.075mm" },
   pin2: { marginTop: "0.075mm", marginBottom: "0.075mm" },
@@ -79,6 +78,7 @@ export default function Circuit() {
       defaultTraceWidth="0.2mm"
       minViaHoleDiameter="0.3mm"
       minViaPadDiameter="0.45mm"
+      placementDrcChecksDisabled
       autorouter={{
         preset: "auto_local",
         local: true,

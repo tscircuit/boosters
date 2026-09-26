@@ -12,6 +12,7 @@ export const KT_0603R = (props: LedProps) => {
   ]
 }}
       manufacturerPartNumber="KT_0603R"
+      pinLabels={{ pin1: "anode", pin2: "cathode" }}
       footprint={<footprint>
         <smtpad portHints={["pin2"]} pcbX="-0.750062mm" pcbY="0mm" width="0.7999984mm" height="0.7999984mm" shape="rect" />
 <smtpad portHints={["pin1"]} pcbX="0.750062mm" pcbY="0mm" width="0.7999984mm" height="0.7999984mm" shape="rect" />
