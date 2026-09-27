@@ -29,7 +29,7 @@ export const BOOSTXL_RS232 = () => (
       local: true,
       traceClearance: "0.15mm",
     }}
-    autorouterEffortLevel="5x"
+    autorouterEffortLevel="2x"
     placementDrcChecksDisabled
     schTraceAutoLabelEnabled
     schMaxTraceDistance="1.2mm"

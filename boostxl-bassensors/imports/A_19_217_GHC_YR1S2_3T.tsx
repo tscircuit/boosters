@@ -12,6 +12,7 @@ export const A_19_217_GHC_YR1S2_3T = (props: LedProps) => {
   ]
 }}
       manufacturerPartNumber="A_19_217_GHC_YR1S2_3T"
+      pinLabels={{ pin1: "anode", pin2: "cathode" }}
       footprint={<footprint>
         <smtpad portHints={["pin2"]} pcbX="0.7489952mm" pcbY="0.000127mm" width="0.7999984mm" height="0.7999984mm" shape="rect" />
 <smtpad portHints={["pin1"]} pcbX="-0.7489952mm" pcbY="-0.000127mm" width="0.7999984mm" height="0.7999984mm" shape="rect" />
