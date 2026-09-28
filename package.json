@@ -17,10 +17,12 @@
     "snapshot": "tsci snapshot '{boostxl-edumkii,boost-drv8848,boostxl-bassensors,boostxl-audio,boostxl-cc2650ma}/index.circuit.tsx'",
     "snapshot:update": "bun run snapshot --update",
     "start": "tsci dev",
+    "test": "bun test",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
+    "bun-types": "^1.4.2",
     "tscircuit": "^0.0.2292",
     "typescript": "^5.0.0"
   },

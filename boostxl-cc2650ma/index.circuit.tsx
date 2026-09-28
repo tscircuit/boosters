@@ -82,7 +82,23 @@ const FLASH_PIN_STYLE = verticalPinStyle(
   "0.15mm",
 )
 
-export default function Circuit() {
+export interface BoostxlCc2650maProps {
+  excludeDebugHeader?: boolean
+  excludeExternalFlash?: boolean
+  excludeRoutingOptions?: boolean
+  excludeStatusLeds?: boolean
+  excludeTestPoints?: boolean
+}
+
+export default function Circuit({
+  excludeDebugHeader = false,
+  excludeExternalFlash = false,
+  excludeRoutingOptions = false,
+  excludeStatusLeds = false,
+  excludeTestPoints = false,
+}: BoostxlCc2650maProps = {}) {
+  const hasDebugAndFlashSheet = !excludeDebugHeader || !excludeExternalFlash
+
   return (
     <board
       name="BOOSTXL_CC2650MA"
@@ -116,11 +132,13 @@ export default function Circuit() {
         displayName="CC2650 Module and LaunchPad Interface"
         sheetIndex={1}
       />
-      <schematicsheet
-        name="debug-flash"
-        displayName="JTAG and Optional External Flash"
-        sheetIndex={2}
-      />
+      {hasDebugAndFlashSheet && (
+        <schematicsheet
+          name="debug-flash"
+          displayName="JTAG and Optional External Flash"
+          sheetIndex={2}
+        />
+      )}
       <schematicsheet
         name="power-status"
         displayName="Power, Test Points, and Status LEDs"
@@ -285,6 +303,7 @@ export default function Circuit() {
         <resistor name="R13" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EC" schX={3} schY={-6.9} pcbX={-2.35} pcbY={1.4} connections={{ pin1: N.DIO8, pin2: N.DIO8_HDR }} />
         <resistor name="R17" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EC" schX={9} schY={-6.9} pcbX={16.15} pcbY={-7.9} connections={{ pin1: N.NRESET, pin2: N.NRESET }} />
         <resistor name="R20" resistance="0ohm" footprint="0603" manufacturerPartNumber="CRCW06030000Z0EC" schX={3} schY={-8.8} pcbX={-21.15} pcbY={7.4} connections={{ pin1: N.DIO9, pin2: N.CS }} />
+        {!excludeRoutingOptions && (
         <group name="DNM_RADIO_OPTIONS" bomDisabled>
           <resistor name="R7" showAsTranslucentModel resistance="0ohm" footprint="0603" manufacturerPartNumber="DNM" schX={-9} schY={-5} pcbX={-2.35} pcbY={-3} pcbRotation={180} connections={{ pin1: N.DIO3_HDR, pin2: N.DIO3 }} />
           <resistor name="R8" showAsTranslucentModel resistance="0ohm" footprint="0603" manufacturerPartNumber="DNM" schX={-3} schY={-5} pcbX={-2.45} pcbY={-9.2} connections={{ pin1: N.DIO2_HDR, pin2: N.DIO2 }} />
@@ -297,8 +316,10 @@ export default function Circuit() {
           <resistor name="R22" showAsTranslucentModel resistance="0ohm" footprint="0603" manufacturerPartNumber="DNM" schX={-3} schY={-10} pcbX={1.55} pcbY={-9.4} pcbRotation={180} connections={{ pin1: N.V33, pin2: N.DIO5 }} />
           <resistor name="R23" showAsTranslucentModel resistance="0ohm" footprint="0603" manufacturerPartNumber="DNM" schX={3} schY={-10} pcbX={1.55} pcbY={-10.65} pcbRotation={180} connections={{ pin1: N.V33, pin2: N.DIO6 }} />
         </group>
+        )}
       </group>
 
+      {hasDebugAndFlashSheet && (
       <group
         name="DEBUG_AND_FLASH"
         schSheetName="debug-flash"
@@ -309,6 +330,8 @@ export default function Circuit() {
         schMaxTraceDistance="1.1mm"
         schTraceAutoLabelEnabled
       >
+        {!excludeDebugHeader && (
+        <>
         <schematicsection name="JTAG" displayName="1.27 mm JTAG Debug Header" sectionTitleFontSize="0.2mm" />
         <FTSH_105_01_F_DV_K
           name="P20"
@@ -344,7 +367,11 @@ export default function Circuit() {
             pin10: N.NRESET,
           }}
         />
+        </>
+        )}
 
+        {!excludeExternalFlash && (
+        <>
         <schematicsection name="OPTIONAL_FLASH" displayName="Optional MX25R8035F Flash (DNM)" sectionTitleFontSize="0.2mm" />
         <group name="DNM_FLASH_OPTIONS" bomDisabled>
           <MX25R8035FZUIL0
@@ -399,7 +426,10 @@ export default function Circuit() {
           pcbRotation={180}
           connections={{ pin1: N.V33, pin2: N.GND }}
         />
+        </>
+        )}
       </group>
+      )}
 
       <group
         name="POWER_AND_STATUS"
@@ -428,6 +458,7 @@ export default function Circuit() {
           connections={{ pin1: N.VDD, pin2: N.V33 }}
         />
         <schematictext text="M1 SNT-100-BK-G shunt installed on P2" schX={-11} schY={0.5} fontSize={0.2} anchor="center_left" />
+        {!excludeRoutingOptions && (
         <group name="DNM_CURRENT_LINK" bomDisabled>
           <resistor
             name="R16"
@@ -442,17 +473,26 @@ export default function Circuit() {
             connections={{ pin1: N.V33, pin2: N.VDD }}
           />
         </group>
+        )}
 
+        {!excludeStatusLeds && (
+        <>
         <schematicsection name="STATUS_LEDS" displayName="DIO2 Green and DIO4 Red Status LEDs" sectionTitleFontSize="0.2mm" />
         <resistor name="R5" resistance="180ohm" footprint="0402" manufacturerPartNumber="CRCW0402180RJNED" schSectionName="STATUS_LEDS" schX={2} schY={3} pcbX={15.438} pcbY={10.9} pcbRotation={180} connections={{ pin1: N.LED_GREEN, pin2: N.DIO2 }} />
         <led name="CR1" color="green" footprint="0603" manufacturerPartNumber="LP L296-J2L2-25" schSectionName="STATUS_LEDS" schX={5} schY={3} pcbX={15.502} pcbY={11.999} pcbRotation={180} connections={{ pin1: N.LED_GREEN, pin2: N.GND }} />
         <resistor name="R6" resistance="220ohm" footprint="0402" manufacturerPartNumber="CRCW0402220RJNED" schSectionName="STATUS_LEDS" schX={8} schY={3} pcbX={10.988} pcbY={10.9} pcbRotation={180} connections={{ pin1: N.LED_RED, pin2: N.DIO4 }} />
         <led name="CR2" color="red" footprint="0603" manufacturerPartNumber="LS L296-P2Q2-1" schSectionName="STATUS_LEDS" schX={11} schY={3} pcbX={10.902} pcbY={11.999} pcbRotation={180} connections={{ pin1: N.LED_RED, pin2: N.GND }} />
+        </>
+        )}
 
+        {!excludeTestPoints && (
+        <>
         <schematicsection name="TEST_POINTS" displayName="Reference Test Points (TI MH1-MH3)" sectionTitleFontSize="0.2mm" />
         <testpoint name="TP1" displayName="MH1 GND" footprintVariant="through_hole" holeDiameter="1.1mm" padDiameter="1.8mm" schSectionName="TEST_POINTS" schX={2} schY={-2} pcbX={10.55} pcbY={-11.9} connections={{ pin1: N.GND }} />
         <testpoint name="TP2" displayName="MH2 3V3" footprintVariant="through_hole" holeDiameter="1.1mm" padDiameter="1.8mm" schSectionName="TEST_POINTS" schX={6} schY={-2} pcbX={-4.25} pcbY={6.6} connections={{ pin1: N.V33 }} />
         <testpoint name="TP3" displayName="MH3 VDD" footprintVariant="through_hole" holeDiameter="1.1mm" padDiameter="1.8mm" schSectionName="TEST_POINTS" schX={10} schY={-2} pcbX={-1.45} pcbY={6.6} connections={{ pin1: N.VDD }} />
+        </>
+        )}
       </group>
 
       <keepout shape="rect" width="6.2mm" height="18mm" pcbX={-34.4} pcbY={0.85} layers={["top", "bottom"]} />

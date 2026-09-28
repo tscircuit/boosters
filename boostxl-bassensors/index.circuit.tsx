@@ -65,7 +65,19 @@ const SENSOR_SCH_PIN_STYLE = {
   pin7: { marginTop: "0.1mm", marginBottom: "0.1mm" },
 }
 
-export default function Circuit() {
+export interface BoostxlBassensorsProps {
+  excludeTemperatureSensor?: boolean
+  excludeHallSensor?: boolean
+  excludeHumiditySensor?: boolean
+  excludeAmbientLightSensor?: boolean
+}
+
+export default function Circuit({
+  excludeTemperatureSensor = false,
+  excludeHallSensor = false,
+  excludeHumiditySensor = false,
+  excludeAmbientLightSensor = false,
+}: BoostxlBassensorsProps = {}) {
   return (
     <board
       name="BOOSTXL_BASSENSORS"
@@ -94,10 +106,18 @@ export default function Circuit() {
       autorouterEffortLevel="5x"
     >
       <schematicsheet name="01 - BoosterPack Interface" displayName="01 - BoosterPack Interface" sheetIndex={1} />
-      <schematicsheet name="02 - TMP116 Temperature" displayName="02 - TMP116 Temperature" sheetIndex={2} />
-      <schematicsheet name="03 - DRV5055 Hall Sensor" displayName="03 - DRV5055 Hall Sensor" sheetIndex={3} />
-      <schematicsheet name="04 - HDC2010 Humidity" displayName="04 - HDC2010 Humidity" sheetIndex={4} />
-      <schematicsheet name="05 - OPT3001 Ambient Light" displayName="05 - OPT3001 Ambient Light" sheetIndex={5} />
+      {!excludeTemperatureSensor && (
+        <schematicsheet name="02 - TMP116 Temperature" displayName="02 - TMP116 Temperature" sheetIndex={2} />
+      )}
+      {!excludeHallSensor && (
+        <schematicsheet name="03 - DRV5055 Hall Sensor" displayName="03 - DRV5055 Hall Sensor" sheetIndex={3} />
+      )}
+      {!excludeHumiditySensor && (
+        <schematicsheet name="04 - HDC2010 Humidity" displayName="04 - HDC2010 Humidity" sheetIndex={4} />
+      )}
+      {!excludeAmbientLightSensor && (
+        <schematicsheet name="05 - OPT3001 Ambient Light" displayName="05 - OPT3001 Ambient Light" sheetIndex={5} />
+      )}
 
       <group
         name="BOOSTERPACK_INTERFACE_BLOCK"
@@ -299,7 +319,8 @@ export default function Circuit() {
         />
       </group>
 
-      <group
+      {!excludeTemperatureSensor && (
+        <group
         name="TMP116_CONNECTOR_BLOCK"
         schSheetName="02 - TMP116 Temperature"
         schX={0}
@@ -351,9 +372,11 @@ export default function Circuit() {
           to={N.I2C_SCL}
           schDisplayLabel="I2C_SCL"
         />
-      </group>
+        </group>
+      )}
 
-      <group
+      {!excludeTemperatureSensor && (
+        <group
         name="TMP116_SENSOR_COUPON_BLOCK"
         schSheetName="02 - TMP116 Temperature"
         schX={0}
@@ -427,9 +450,11 @@ export default function Circuit() {
           pcbRotation={90}
           connections={{ pin1: N.TMP_MODULE_POWER, pin2: N.TMP_MODULE_GND }}
         />
-      </group>
+        </group>
+      )}
 
-      <group
+      {!excludeHallSensor && (
+        <group
         name="DRV5055_BLOCK"
         schSheetName="03 - DRV5055 Hall Sensor"
         schX={0}
@@ -498,9 +523,11 @@ export default function Circuit() {
           pcbRotation={90}
           connections={{ pin1: N.DRV_POWER, pin2: N.GND }}
         />
-      </group>
+        </group>
+      )}
 
-      <group
+      {!excludeHumiditySensor && (
+        <group
         name="HDC2010_BLOCK"
         schSheetName="04 - HDC2010 Humidity"
         schX={0}
@@ -575,9 +602,11 @@ export default function Circuit() {
           pcbY={-13.0}
           connections={{ pin1: N.HDC_POWER, pin2: N.GND }}
         />
-      </group>
+        </group>
+      )}
 
-      <group
+      {!excludeAmbientLightSensor && (
+        <group
         name="OPT3001_BLOCK"
         schSheetName="05 - OPT3001 Ambient Light"
         schX={0}
@@ -645,7 +674,8 @@ export default function Circuit() {
           pcbRotation={90}
           connections={{ pin1: "net.OPT_VDD", pin2: N.GND }}
         />
-      </group>
+        </group>
+      )}
 
       <testpoint
         name="GND1"

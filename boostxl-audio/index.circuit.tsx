@@ -81,7 +81,21 @@ const N = {
 	HEADPHONE_OUT: "net.HP_OUT",
 } as const;
 
-export default function Circuit() {
+export interface BoostxlAudioProps {
+	excludeDacAndPwmSource?: boolean;
+	excludeHeadset?: boolean;
+	excludeMicrophonePreamplifier?: boolean;
+	excludeAudioSwitch?: boolean;
+	excludeLoudspeakerAmplifier?: boolean;
+}
+
+export default function Circuit({
+	excludeDacAndPwmSource = false,
+	excludeHeadset = false,
+	excludeMicrophonePreamplifier = false,
+	excludeAudioSwitch = false,
+	excludeLoudspeakerAmplifier = false,
+}: BoostxlAudioProps = {}) {
 	return (
 		<board
 			name="BOOSTXL_AUDIO"
@@ -99,27 +113,37 @@ export default function Circuit() {
 				displayName={LAUNCHPAD_SHEET}
 				sheetIndex={1}
 			/>
-			<schematicsheet name={DAC_SHEET} displayName={DAC_SHEET} sheetIndex={2} />
-			<schematicsheet
-				name={HEADSET_SHEET}
-				displayName={HEADSET_SHEET}
-				sheetIndex={3}
-			/>
-			<schematicsheet
-				name={SWITCH_SHEET}
-				displayName={SWITCH_SHEET}
-				sheetIndex={4}
-			/>
-			<schematicsheet
-				name={MICROPHONE_SHEET}
-				displayName={MICROPHONE_SHEET}
-				sheetIndex={5}
-			/>
-			<schematicsheet
-				name={LOUDSPEAKER_SHEET}
-				displayName={LOUDSPEAKER_SHEET}
-				sheetIndex={6}
-			/>
+			{!excludeDacAndPwmSource && (
+				<schematicsheet name={DAC_SHEET} displayName={DAC_SHEET} sheetIndex={2} />
+			)}
+				{!excludeHeadset && (
+					<schematicsheet
+						name={HEADSET_SHEET}
+						displayName={HEADSET_SHEET}
+						sheetIndex={3}
+					/>
+				)}
+				{!excludeAudioSwitch && (
+					<schematicsheet
+						name={SWITCH_SHEET}
+						displayName={SWITCH_SHEET}
+						sheetIndex={4}
+					/>
+				)}
+				{!excludeMicrophonePreamplifier && (
+					<schematicsheet
+						name={MICROPHONE_SHEET}
+						displayName={MICROPHONE_SHEET}
+						sheetIndex={5}
+					/>
+				)}
+				{!excludeLoudspeakerAmplifier && (
+					<schematicsheet
+						name={LOUDSPEAKER_SHEET}
+						displayName={LOUDSPEAKER_SHEET}
+						sheetIndex={6}
+					/>
+				)}
 
 			<silkscreentext
 				text="BOOSTXL-AUDIO"
@@ -354,6 +378,7 @@ export default function Circuit() {
 				/>
 			</group>
 
+			{!excludeDacAndPwmSource && (
 			<group
 				name="DAC_SIGNAL_SOURCE"
 				schSheetName={DAC_SHEET}
@@ -521,7 +546,9 @@ export default function Circuit() {
 					connections={{ pin1: N.AUDIO_OUT, pin2: N.GND }}
 				/>
 			</group>
+			)}
 
+			{!excludeHeadset && (
 			<group
 				name="AUDIO_JACK_DETECTION"
 				schSheetName={HEADSET_SHEET}
@@ -777,7 +804,9 @@ export default function Circuit() {
 					}
 				/>
 			</group>
+			)}
 
+			{!excludeMicrophonePreamplifier && (
 			<group
 				name="MICROPHONE_AMPLIFIER"
 				schSheetName={MICROPHONE_SHEET}
@@ -1076,7 +1105,9 @@ export default function Circuit() {
 					connections={{ pin1: N.MIC_OUT, pin2: N.GND }}
 				/>
 			</group>
+			)}
 
+			{!excludeAudioSwitch && (
 			<group
 				name="ANALOG_AUDIO_SWITCH"
 				schSheetName={SWITCH_SHEET}
@@ -1265,7 +1296,9 @@ export default function Circuit() {
 					connections={{ pin2: N.GND }}
 				/>
 			</group>
+			)}
 
+			{!excludeLoudspeakerAmplifier && (
 			<group
 				name="LOUDSPEAKER_AMPLIFIER"
 				schSheetName={LOUDSPEAKER_SHEET}
@@ -1480,6 +1513,7 @@ export default function Circuit() {
 					connections={{ pin2: N.LOUDSPEAKER_OUT_N }}
 				/>
 			</group>
+			)}
 
 			<copperpour
 				name="GND_BOTTOM_POUR"

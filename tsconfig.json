@@ -16,6 +16,7 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "types": [
+      "bun-types",
       "tscircuit"
     ]
   },
@@ -32,6 +33,8 @@
     "boostxl-bassensors/**/*.tsx",
     "boostxl-audio/**/*.ts",
     "boostxl-audio/**/*.tsx",
+    "boostxl-cc2650ma/**/*.ts",
+    "boostxl-cc2650ma/**/*.tsx",
     "boostxl-ads7841-q1/**/*.ts",
     "boostxl-ads7841-q1/**/*.tsx",
     "boostxl-ads1119/**/*.ts",
@@ -39,7 +42,9 @@
     "boostxl-uln2003/**/*.ts",
     "boostxl-uln2003/**/*.tsx",
     "boostxl-rs232/**/*.ts",
-    "boostxl-rs232/**/*.tsx"
+    "boostxl-rs232/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
