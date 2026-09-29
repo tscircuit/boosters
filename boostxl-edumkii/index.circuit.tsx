@@ -650,7 +650,7 @@ export default function Circuit({
     <JlcResistor name="R8" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-9} schSectionName="Audio" />
     <JlcResistor name="R9" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-12} schSectionName="Audio" />
     <JlcCapacitor name="C9" capacitance="1uF" footprint="0603" pcbX={-22} pcbY={-18.5} schSectionName="Audio" />
-    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-9} schSectionName="Audio" />
+    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-10} schSectionName="Audio" />
     <JlcResistor name="R11" resistance="10k" footprint="0603" pcbX={-26} pcbY={-15.8} schSectionName="Audio" />
     <JlcCapacitor name="C10" capacitance="100nF" footprint="0603" pcbX={-35} pcbY={-10} schSectionName="Audio" />
     <T from=".U7 > .POS" to="net.MIC_BIAS" />

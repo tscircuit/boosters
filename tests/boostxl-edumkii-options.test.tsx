@@ -3,8 +3,13 @@ import BoostxlEdumkii from "../boostxl-edumkii/index.circuit"
 import { expectBoardExcludes } from "./expect-board-excludes"
 
 test(
-  "BOOSTXL-EDUMKII renders without excluded optional subsystems",
+  "BOOSTXL-EDUMKII renders representative and minimal configurations",
   async () => {
+    await expectBoardExcludes({
+      board: <BoostxlEdumkii excludeTftDisplay excludeRgbLedAndBuzzer />,
+      excludedElementNames: ["DisplaySchematic", "OutputsSchematic"],
+      excludedText: ["SPI TFT Display", "RGB LED & Buzzer Drivers"],
+    })
     await expectBoardExcludes({
       board: (
         <BoostxlEdumkii
