@@ -356,7 +356,7 @@ export default function Circuit({
           schPinStyle={SENSOR_SCH_PIN_STYLE}
           schPinArrangement={{ leftSide: [1, 2, 3, 4, 5], bottomSide: [6, 7] }}
           pcbX={10.0}
-          pcbY={-15.0}
+          pcbY={-14.8}
           pcbRotation={0}
           noConnect={["pin6", "pin7"]}
           connections={{
@@ -399,7 +399,7 @@ export default function Circuit({
           schPinStyle={SENSOR_SCH_PIN_STYLE}
           schPinArrangement={{ leftSide: [1, 2, 3, 4, 5], bottomSide: [6, 7] }}
           pcbX={32.1}
-          pcbY={-15.0}
+          pcbY={-14.8}
           pcbRotation={0}
           noConnect={["pin6", "pin7"]}
           connections={{

@@ -16,6 +16,8 @@ export async function expectBoardExcludes(params: {
   expect(
     circuitJson.some((element) => element.type.startsWith("source_failed_to_create_component_error")),
   ).toBe(false)
+  expect(circuitJson.some((element) => element.type === "pcb_placement_error")).toBe(false)
+  expect(circuitJson.some((element) => element.type === "pcb_autorouting_error")).toBe(false)
 
   const renderedElementNames = new Set(
     circuitJson.flatMap((element) =>

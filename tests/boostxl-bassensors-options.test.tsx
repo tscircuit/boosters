@@ -3,8 +3,12 @@ import BoostxlBassensors from "../boostxl-bassensors/index.circuit"
 import { expectBoardExcludes } from "./expect-board-excludes"
 
 test(
-  "BOOSTXL-BASSENSORS renders without excluded sensor blocks",
+  "BOOSTXL-BASSENSORS renders full and minimal configurations",
   async () => {
+    await expectBoardExcludes({
+      board: <BoostxlBassensors />,
+      excludedElementNames: [],
+    })
     await expectBoardExcludes({
       board: (
         <BoostxlBassensors
