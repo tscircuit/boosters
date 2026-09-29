@@ -3,8 +3,17 @@ import { DRV8848PWPR } from "./imports/DRV8848PWPR";
 import { OSTTC022162 } from "./imports/OSTTC022162";
 import { OSTTC042162 } from "./imports/OSTTC042162";
 
-export default () => (
-  <board
+export interface BoostDrv8848Props {
+  excludeFaultIndicator?: boolean;
+  excludeMotorPowerIndicator?: boolean;
+}
+
+export default function Circuit({
+  excludeFaultIndicator = false,
+  excludeMotorPowerIndicator = false,
+}: BoostDrv8848Props = {}) {
+  return (
+    <board
     title="TI BOOST-DRV8848 Dual Brushed Motor BoosterPack"
     width="50.8mm"
     height="44.45mm"
@@ -111,34 +120,38 @@ export default () => (
       schSheetName="Driver and motor power"
     />
 
-    <led
-      name="D1"
-      color="red"
-      footprint="0805"
-      manufacturerPartNumber="LTST-C170KRKT"
-      supplierPartNumbers={{ jlcpcb: ["C94868"] }}
-      pcbX={11.938}
-      pcbY={-17.4752}
-      pcbRotation={270}
-      schX={8}
-      schY={3}
-      schRotation={270}
-      schSheetName="Driver and motor power"
-    />
-    <led
-      name="D2"
-      color="green"
-      footprint="0805"
-      manufacturerPartNumber="LTST-C171GKT"
-      supplierPartNumbers={{ jlcpcb: ["C913075"] }}
-      pcbX={8.7376}
-      pcbY={-17.4752}
-      pcbRotation={270}
-      schX={4}
-      schY={3}
-      schRotation={270}
-      schSheetName="Driver and motor power"
-    />
+    {!excludeFaultIndicator && (
+      <led
+        name="D1"
+        color="red"
+        footprint="0805"
+        manufacturerPartNumber="LTST-C170KRKT"
+        supplierPartNumbers={{ jlcpcb: ["C94868"] }}
+        pcbX={11.938}
+        pcbY={-17.4752}
+        pcbRotation={270}
+        schX={8}
+        schY={3}
+        schRotation={270}
+        schSheetName="Driver and motor power"
+      />
+    )}
+    {!excludeMotorPowerIndicator && (
+      <led
+        name="D2"
+        color="green"
+        footprint="0805"
+        manufacturerPartNumber="LTST-C171GKT"
+        supplierPartNumbers={{ jlcpcb: ["C913075"] }}
+        pcbX={8.7376}
+        pcbY={-17.4752}
+        pcbRotation={270}
+        schX={4}
+        schY={3}
+        schRotation={270}
+        schSheetName="Driver and motor power"
+      />
+    )}
 
     <pinheader
       name="J1"
@@ -224,19 +237,21 @@ export default () => (
       schHeight="0.4mm"
       schSheetName="Driver and motor power"
     />
-    <resistor
-      name="R2"
-      resistance="330"
-      tolerance="5%"
-      footprint="0603"
-      manufacturerPartNumber="CRCW0603330RJNEA"
-      pcbX={14.4272}
-      pcbY={-19.9136}
-      schX={6}
-      schY={3}
-      schRotation={270}
-      schSheetName="Driver and motor power"
-    />
+    {!excludeFaultIndicator && (
+      <resistor
+        name="R2"
+        resistance="330"
+        tolerance="5%"
+        footprint="0603"
+        manufacturerPartNumber="CRCW0603330RJNEA"
+        pcbX={14.4272}
+        pcbY={-19.9136}
+        schX={6}
+        schY={3}
+        schRotation={270}
+        schSheetName="Driver and motor power"
+      />
+    )}
     <resistor
       name="R3"
       resistance="0.25"
@@ -278,20 +293,22 @@ export default () => (
       schY={0}
       schSheetName="LaunchPad interface"
     />
-    <resistor
-      name="R6"
-      resistance="4.99k"
-      tolerance="1%"
-      footprint="0603"
-      manufacturerPartNumber="CRCW06034K99FKEA"
-      pcbX={8.7376}
-      pcbY={-12.9032}
-      pcbRotation={90}
-      schX={4}
-      schY={4}
-      schRotation={270}
-      schSheetName="Driver and motor power"
-    />
+    {!excludeMotorPowerIndicator && (
+      <resistor
+        name="R6"
+        resistance="4.99k"
+        tolerance="1%"
+        footprint="0603"
+        manufacturerPartNumber="CRCW06034K99FKEA"
+        pcbX={8.7376}
+        pcbY={-12.9032}
+        pcbRotation={90}
+        schX={4}
+        schY={4}
+        schRotation={270}
+        schSheetName="Driver and motor power"
+      />
+    )}
 
     {/* Motor supply and high-current bridge paths */}
     <trace from=".J5 > .VM" to="net.VM" width="0.762mm" schDisplayLabel="VM" />
@@ -308,12 +325,14 @@ export default () => (
       width="0.254mm"
       schDisplayLabel="VM"
     />
-    <trace
-      from=".R6 > .pin1"
-      to="net.VM"
-      width="0.254mm"
-      schDisplayLabel="VM"
-    />
+    {!excludeMotorPowerIndicator && (
+      <trace
+        from=".R6 > .pin1"
+        to="net.VM"
+        width="0.254mm"
+        schDisplayLabel="VM"
+      />
+    )}
 
     <trace from=".U1 > .AOUT1" to=".J6 > .AOUT1" width="0.762mm" />
     <trace from=".U1 > .AOUT2" to=".J6 > .AOUT2" width="0.762mm" />
@@ -412,12 +431,14 @@ export default () => (
       width="0.254mm"
       schDisplayLabel="GND"
     />
-    <trace
-      from=".D2 > .pin2"
-      to="net.GND"
-      width="0.254mm"
-      schDisplayLabel="GND"
-    />
+    {!excludeMotorPowerIndicator && (
+      <trace
+        from=".D2 > .pin2"
+        to="net.GND"
+        width="0.254mm"
+        schDisplayLabel="GND"
+      />
+    )}
     <trace
       from=".J2 > .pin2"
       to="net.GND"
@@ -476,19 +497,23 @@ export default () => (
       width="0.254mm"
       schDisplayLabel="V3P3"
     />
-    <trace
-      from=".D1 > .pin1"
-      to="net.V3P3"
-      width="0.254mm"
-      schDisplayLabel="V3P3"
-    />
-    <trace from=".D1 > .pin2" to=".R2 > .pin1" width="0.254mm" />
-    <trace
-      from=".R2 > .pin2"
-      to="net.NFAULT"
-      width="0.254mm"
-      schDisplayLabel="nFAULT"
-    />
+    {!excludeFaultIndicator && (
+      <>
+        <trace
+          from=".D1 > .pin1"
+          to="net.V3P3"
+          width="0.254mm"
+          schDisplayLabel="V3P3"
+        />
+        <trace from=".D1 > .pin2" to=".R2 > .pin1" width="0.254mm" />
+        <trace
+          from=".R2 > .pin2"
+          to="net.NFAULT"
+          width="0.254mm"
+          schDisplayLabel="nFAULT"
+        />
+      </>
+    )}
     <trace
       from=".U1 > .nFAULT"
       to="net.NFAULT"
@@ -501,7 +526,9 @@ export default () => (
       width="0.254mm"
       schDisplayLabel="nFAULT"
     />
-    <trace from=".R6 > .pin2" to=".D2 > .pin1" width="0.254mm" />
+    {!excludeMotorPowerIndicator && (
+      <trace from=".R6 > .pin2" to=".D2 > .pin1" width="0.254mm" />
+    )}
 
     {/* LaunchPad control interface */}
     <trace
@@ -728,5 +755,6 @@ export default () => (
     <silkscreentext text="VREF" pcbX={-17.5} pcbY={-12} fontSize="0.8mm" />
     <silkscreentext text="VM" pcbX={8.7} pcbY={-15} fontSize="0.8mm" />
     <silkscreentext text="nFAULT" pcbX={13.5} pcbY={-15} fontSize="0.8mm" />
-  </board>
-);
+    </board>
+  );
+}

@@ -23,12 +23,43 @@ A multi-board tscircuit repository for BoosterPack-compatible expansion boards f
 
 Each BoosterPack lives in its own top-level directory with its circuit entrypoint, TypeScript component imports, and board-specific documentation. Shared deployment and TypeScript configuration remain at the repository root.
 
+## Parameterized configurations
+
+Selected boards expose optional `exclude...` props for producing application-specific
+variants from the same TSX source. Every prop defaults to `false`, so rendering a
+component without props preserves the complete reference board.
+
+```tsx
+import BoostxlAudio from "@tsci/tscircuit.boosters/boostxl-audio/index.circuit"
+
+export default () => (
+  <BoostxlAudio excludeHeadset excludeLoudspeakerAmplifier />
+)
+```
+
+The parameterized boards and their options are:
+
+- `BoostxlEdumkiiProps`: TFT display, controls, sensor suite, microphone, RGB LED
+  and buzzer, servo and clip expansion, and power indicators.
+- `BoostDrv8848Props`: fault indicator and motor-power indicator.
+- `BoostxlBassensorsProps`: temperature, Hall, humidity, and ambient-light sensors.
+- `BoostxlAudioProps`: DAC/PWM source, headset, microphone preamplifier, analog audio
+  switch, and loudspeaker amplifier.
+- `BoostxlCc2650maProps`: debug header, external flash, routing options, status LEDs,
+  and test points.
+
+An excluded subsystem omits its components, traces, schematic section, and dedicated
+schematic sheet where applicable. Board outlines and required interface circuitry stay
+unchanged so every configuration remains mechanically compatible with the original
+BoosterPack.
+
 ## Build
 
 Prerequisites: Bun and a current Node.js runtime.
 
 ```sh
 bun install
+bun run test
 bun run typecheck
 bun run build
 ```

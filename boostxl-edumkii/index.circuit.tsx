@@ -245,8 +245,31 @@ const rgbFootprint = (
   </footprint>
 )
 
-export default () => (
-  <board
+export interface BoostxlEdumkiiProps {
+  excludeTftDisplay?: boolean
+  excludeControls?: boolean
+  excludeSensorSuite?: boolean
+  excludeMicrophone?: boolean
+  excludeRgbLedAndBuzzer?: boolean
+  excludeServoAndClipExpansion?: boolean
+  excludePowerIndicators?: boolean
+}
+
+export default function Circuit({
+  excludeTftDisplay = false,
+  excludeControls = false,
+  excludeSensorSuite = false,
+  excludeMicrophone = false,
+  excludeRgbLedAndBuzzer = false,
+  excludeServoAndClipExpansion = false,
+  excludePowerIndicators = false,
+}: BoostxlEdumkiiProps = {}) {
+  const hasSensingSheet = !excludeSensorSuite || !excludeMicrophone
+  const hasOutputsSheet =
+    !excludeRgbLedAndBuzzer || !excludeServoAndClipExpansion || !excludePowerIndicators
+
+  return (
+    <board
     title="EDU BoosterPack TS"
     outline={boardOutline}
     layers={2}
@@ -261,19 +284,27 @@ export default () => (
     minViaPadDiameter="0.45mm"
   >
     <schematicsheet name="Interface" displayName="Interface, Display & Controls" sheetIndex={1} />
-    <schematicsheet name="Sensing" displayName="Sensors & Microphone" sheetIndex={2} />
-    <schematicsheet name="Outputs" displayName="Outputs, Expansion & Power" sheetIndex={3} />
+    {hasSensingSheet && (
+      <schematicsheet name="Sensing" displayName="Sensors & Microphone" sheetIndex={2} />
+    )}
+    {hasOutputsSheet && (
+      <schematicsheet name="Outputs" displayName="Outputs, Expansion & Power" sheetIndex={3} />
+    )}
 
     <group name="InterfaceSheetSchematic" pcbX={0} pcbY={0} schSheetName="Interface" schX={0} schY={0}>
     <schematicsection name="Interface" displayName="LaunchPad Interface" />
-    <schematicsection name="Display" displayName="SPI TFT Display" />
-    <schematicsection name="Controls" displayName="Joystick & Buttons" />
+    {!excludeTftDisplay && <schematicsection name="Display" displayName="SPI TFT Display" />}
+    {!excludeControls && <schematicsection name="Controls" displayName="Joystick & Buttons" />}
 
     <silkscreentext text="EDU BOOSTERPACK TS" pcbX={0} pcbY={25.8} fontSize="1.6mm" />
     <silkscreentext text="LaunchPad XL compatible • 3V3 logic" pcbX={0} pcbY={23.7} fontSize="0.9mm" />
-    <silkscreentext text="JOYSTICK" pcbX={-48} pcbY={20} fontSize="1mm" />
-    <silkscreentext text="SENSORS" pcbX={5} pcbY={20} fontSize="1mm" />
-    <silkscreentext text="BUTTONS" pcbX={49} pcbY={21.5} fontSize="1mm" />
+    {!excludeControls && (
+      <>
+        <silkscreentext text="JOYSTICK" pcbX={-48} pcbY={20} fontSize="1mm" />
+        <silkscreentext text="BUTTONS" pcbX={49} pcbY={21.5} fontSize="1mm" />
+      </>
+    )}
+    {!excludeSensorSuite && <silkscreentext text="SENSORS" pcbX={5} pcbY={20} fontSize="1mm" />}
 
     <group name="InterfaceSchematic" pcbX={0} pcbY={0} schX={-11.5} schY={0}>
     <pinheader
@@ -389,6 +420,7 @@ export default () => (
     <T from=".J2 > .pin10" to="net.GND" />
     </group>
 
+    {!excludeTftDisplay && (
     <group name="DisplaySchematic" pcbX={0} pcbY={0} schX={-1.5} schY={0} schAutoLayoutEnabled>
     <chip
       name="U5"
@@ -436,7 +468,9 @@ export default () => (
     <T from=".C5 > .pin1" to="net.V3V3" />
     <T from=".C5 > .pin2" to="net.GND" />
     </group>
+    )}
 
+    {!excludeControls && (
     <group name="ControlsSchematic" pcbX={0} pcbY={0} schX={9.5} schY={-1} schAutoLayoutEnabled>
     <YA13_FL7_4_B5Ka_45_10__R_Y06
       name="U6"
@@ -515,11 +549,14 @@ export default () => (
     <T from=".R4 > .pin1" to="net.V3V3" />
     <T from=".R4 > .pin2" to="net.BTN2" />
     </group>
+    )}
     </group>
 
+    {hasSensingSheet && (
     <group name="SensingSheetSchematic" pcbX={0} pcbY={0} schSheetName="Sensing" schX={0} schY={0}>
-    <schematicsection name="Sensors" displayName="Environmental & Motion Sensors" />
-    <schematicsection name="Audio" displayName="Microphone Front End" />
+    {!excludeSensorSuite && <schematicsection name="Sensors" displayName="Environmental & Motion Sensors" />}
+    {!excludeMicrophone && <schematicsection name="Audio" displayName="Microphone Front End" />}
+    {!excludeSensorSuite && (
     <group name="SensorsSchematic" pcbX={0} pcbY={0} schX={-3.3} schY={-0.4} schAutoLayoutEnabled>
     <JlcResistor name="R5" resistance="10k" footprint="0603" pcbX={-9} pcbY={20.5} schSectionName="Sensors" />
     <JlcResistor name="R6" resistance="10k" footprint="0603" pcbX={-6} pcbY={20.5} schSectionName="Sensors" />
@@ -583,7 +620,9 @@ export default () => (
     <T from=".C3 > .pin1" to="net.V3V3" />
     <T from=".C3 > .pin2" to="net.GND" />
     </group>
+    )}
 
+    {!excludeMicrophone && (
     <group name="AudioSchematic" pcbX={0} pcbY={0} schX={6.3} schY={-0.1} schAutoLayoutEnabled>
     <chip
       name="U7"
@@ -611,7 +650,7 @@ export default () => (
     <JlcResistor name="R8" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-9} schSectionName="Audio" />
     <JlcResistor name="R9" resistance="100k" footprint="0603" pcbX={-27.5} pcbY={-12} schSectionName="Audio" />
     <JlcCapacitor name="C9" capacitance="1uF" footprint="0603" pcbX={-22} pcbY={-18.5} schSectionName="Audio" />
-    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-9} schSectionName="Audio" />
+    <JlcResistor name="R10" resistance="100k" footprint="0603" pcbX={-31} pcbY={-10} schSectionName="Audio" />
     <JlcResistor name="R11" resistance="10k" footprint="0603" pcbX={-26} pcbY={-15.8} schSectionName="Audio" />
     <JlcCapacitor name="C10" capacitance="100nF" footprint="0603" pcbX={-35} pcbY={-10} schSectionName="Audio" />
     <T from=".U7 > .POS" to="net.MIC_BIAS" />
@@ -638,12 +677,16 @@ export default () => (
     <T from=".C10 > .pin1" to="net.V3V3" />
     <T from=".C10 > .pin2" to="net.GND" />
     </group>
+    )}
     </group>
+    )}
 
+    {hasOutputsSheet && (
     <group name="OutputsSheetSchematic" pcbX={0} pcbY={0} schSheetName="Outputs" schX={0} schY={0}>
-    <schematicsection name="Outputs" displayName="RGB LED & Buzzer Drivers" />
-    <schematicsection name="Expansion" displayName="Servo & Clip Expansion" />
-    <schematicsection name="Power" displayName="Power Indicators" />
+    {!excludeRgbLedAndBuzzer && <schematicsection name="Outputs" displayName="RGB LED & Buzzer Drivers" />}
+    {!excludeServoAndClipExpansion && <schematicsection name="Expansion" displayName="Servo & Clip Expansion" />}
+    {!excludePowerIndicators && <schematicsection name="Power" displayName="Power Indicators" />}
+    {!excludeRgbLedAndBuzzer && (
     <group name="OutputsSchematic" pcbX={0} pcbY={0} schX={-9.2} schY={0.5}>
     <chip
       name="U8"
@@ -727,7 +770,9 @@ export default () => (
     <T from=".D1 > .anode" to="net.BUZZER_SINK" />
     <T from=".D1 > .cathode" to="net.V5V" />
     </group>
+    )}
 
+    {!excludeServoAndClipExpansion && (
     <group name="ExpansionSchematic" pcbX={0} pcbY={0} schX={3.3} schY={1} schAutoLayoutEnabled>
     <pinheader
       name="JSERVO"
@@ -757,7 +802,9 @@ export default () => (
     <silkscreentext text="GND CLIP" pcbX={-25.4} pcbY={18.8} fontSize="0.9mm" />
     <silkscreentext text="TOUCH / CLIP" pcbX={25.4} pcbY={18.8} fontSize="0.9mm" />
     </group>
+    )}
 
+    {!excludePowerIndicators && (
     <group name="PowerSchematic" pcbX={0} pcbY={0} schX={11} schY={0.6} schAutoLayoutEnabled>
     <JlcLed name="D3V3" color="green" footprint="0603" pcbX={-53} pcbY={-13} schSectionName="Power" />
     <JlcResistor name="R3V3" resistance="1k" footprint="0603" pcbX={-50} pcbY={-13} schSectionName="Power" />
@@ -774,8 +821,11 @@ export default () => (
     <silkscreentext text="3V3" pcbX={-56} pcbY={-13} fontSize="0.9mm" />
     <silkscreentext text="5V" pcbX={-56} pcbY={-18} fontSize="0.9mm" />
     </group>
+    )}
     </group>
+    )}
 
     <copperpour layer="bottom" connectsTo="net.GND" clearance="0.25mm" boardEdgeMargin="0.4mm" />
-  </board>
-)
+    </board>
+  )
+}
