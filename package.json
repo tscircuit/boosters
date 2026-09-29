@@ -14,8 +14,8 @@
     "dev": "tsci dev",
     "build": "tsci build --ci --concurrency 4 --autorouter-timeout 600s",
     "build:ci": "tsci build --ci --concurrency 4 --autorouter-timeout 600s",
-    "snapshot": "tsci snapshot boostxl-edumkii/index.circuit.tsx",
-    "snapshot:update": "tsci snapshot boostxl-edumkii/index.circuit.tsx --update",
+    "snapshot": "tsci snapshot '{boostxl-edumkii,boost-drv8848,boostxl-bassensors,boostxl-audio,boostxl-cc2650ma}/index.circuit.tsx'",
+    "snapshot:update": "bun run snapshot --update",
     "start": "tsci dev",
     "typecheck": "tsc --noEmit"
   },
